@@ -11,8 +11,14 @@ package ca.engine;
  */
 public class CellFactory {
     
-    
-      public Cell fabricate(int type,int id,boolean rule){
+    /**
+     *
+     * @param type
+     * @param id
+     * @param rule
+     * @return
+     */
+    public Cell fabricate(int type,int id,boolean rule){
         
         switch (type) {
             case 1:                

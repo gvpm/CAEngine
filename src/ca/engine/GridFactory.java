@@ -11,6 +11,12 @@ package ca.engine;
  */
 public class GridFactory {
     
+    /**
+     *
+     * @param type
+     * @param engine
+     * @return
+     */
     public Grid fabricate(int type,CAEngine engine){
         
         switch (type) {

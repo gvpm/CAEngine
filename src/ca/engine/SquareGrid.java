@@ -5,14 +5,27 @@
  */
 package ca.engine;
 
+/**
+ *
+ * @author gvpm
+ */
 public class SquareGrid extends Grid {
 
+    /**
+     *
+     * @param engine
+     */
     public SquareGrid(CAEngine engine) {
         super(engine);
         this.type = 1;
 
     }
 
+    /**
+     *
+     * @param rows
+     * @param columns
+     */
     @Override
     public void setupGrid(int rows, int columns) {
         this.rows = rows;
@@ -20,6 +33,9 @@ public class SquareGrid extends Grid {
         this.nOfCells = rows * columns;
     }
 
+    /**
+     *
+     */
     @Override
     //creates all the cells
     public void initGrid() {
@@ -30,6 +46,9 @@ public class SquareGrid extends Grid {
 
     }
 
+    /**
+     *
+     */
     @Override
     public void setNeighbours() {
         setNeighboursNull();
@@ -70,6 +89,11 @@ public class SquareGrid extends Grid {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public int nOfEdges(int id) {
         int r;
         r = 0;
@@ -93,6 +117,9 @@ public class SquareGrid extends Grid {
         return r;
     }
 
+    /**
+     *
+     */
     public void setNeighboursNull() {
         SquareCell c;
 
@@ -110,6 +137,10 @@ public class SquareGrid extends Grid {
         }
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void printNeighbours(int id) {
         SquareCell c = (SquareCell)cells.get(id);

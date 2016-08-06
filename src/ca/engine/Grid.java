@@ -22,22 +22,40 @@ public abstract class Grid {
     
     CellFactory cellFac = new CellFactory();
 
+    /**
+     *
+     * @param engine
+     */
     public Grid(CAEngine engine) {
         this.engine = engine;
         cells = new ArrayList<Cell>();
     }
     
-    
-    
+    /**
+     *
+     * @param rows
+     * @param columns
+     */
     public abstract void setupGrid(int rows,int  columns);
     
+    /**
+     *
+     */
     public abstract void initGrid();
     
+    /**
+     *
+     * @param c
+     */
     public void addCell(Cell c){
         cells.add(c);
     }
     
     //loads the first state into all the cells
+
+    /**
+     *
+     */
     public void loadDefaultStates(){
         if(!engine.getStates().isEmpty()){
             if(!cells.isEmpty()){
@@ -58,10 +76,22 @@ public abstract class Grid {
         
     }
     //SET NAIGHBOURS ACORDING TO BAUNDARIES
+
+    /**
+     *
+     */
     public abstract void setNeighbours();
     
+    /**
+     *
+     * @param id
+     */
     public abstract void printNeighbours(int id);
     
+    /**
+     *
+     * @return
+     */
     public String lineString(){
         String r;
         r=null;
@@ -80,7 +110,11 @@ public abstract class Grid {
         
     }
     
-        public String idString(){
+    /**
+     *
+     * @return
+     */
+    public String idString(){
         String r;
         r=null;
         for (int i = 0; i < cells.size(); i++) {

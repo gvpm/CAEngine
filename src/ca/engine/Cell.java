@@ -28,6 +28,11 @@ public abstract class Cell {
     //The cell with the rule type will only have the states of the neighbours
     boolean rule;
     
+    /**
+     *
+     * @param id
+     * @param rule
+     */
     public Cell(int id,boolean rule) {
         this.id = id;
         this.rule=rule;
@@ -36,59 +41,106 @@ public abstract class Cell {
     
         
     //--------Getters and Setters
+
+    /**
+     *
+     */
     
     public void flagNewState(){
         hasNewState = true;
         
     }
+
+    /**
+     *
+     */
     public void unFlagNewState(){
         hasNewState = false;
         
     }
     
-
+    /**
+     *
+     * @return
+     */
     public boolean hasNewState() {
         return hasNewState;
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public int getType() {
         return type;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public State getCurrentState() {
         return currentState;
     }
 
+    /**
+     *
+     * @param currentState
+     */
     public void setCurrentState(State currentState) {
         this.currentState = currentState;
     }
 
+    /**
+     *
+     * @return
+     */
     public State getNextState() {
         return nextState;
     }
 
+    /**
+     *
+     * @param nextState
+     */
     public void setNextState(State nextState) {
         this.nextState = nextState;
         flagNewState();
     }
     
     //--------Others
+
+    /**
+     *
+     * @param c
+     * @return
+     */
     
     public boolean typeMatch (Cell c){
         return c.getId()==this.getId();
         
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isRuleCell(){
         return rule;
         
@@ -96,6 +148,10 @@ public abstract class Cell {
     //change this to put history
     
     //will update the cell, unflags the changes, current becomes new, new becomes null
+
+    /**
+     *
+     */
     public void updateCell(){
         if(hasNewState()){
             unFlagNewState();
@@ -113,7 +169,12 @@ public abstract class Cell {
          
         
     }
-     public String idString(){
+
+    /**
+     *
+     * @return
+     */
+    public String idString(){
         
         return Integer.toString(id);
          
@@ -123,6 +184,12 @@ public abstract class Cell {
     
     
     //--------Abstracts
+
+    /**
+     *
+     * @param c
+     * @return
+     */
     
     public abstract boolean compare (Cell c);
     

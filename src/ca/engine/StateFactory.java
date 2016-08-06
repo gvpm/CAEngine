@@ -11,6 +11,12 @@ package ca.engine;
  */
 public class StateFactory {
     
+    /**
+     *
+     * @param type
+     * @param value
+     * @return
+     */
     public State fabricate(int type, Object value){
         
         switch (type) {

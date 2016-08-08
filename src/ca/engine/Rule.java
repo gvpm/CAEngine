@@ -11,4 +11,30 @@ package ca.engine;
  */
 public class Rule {
 
+    Cell ruleCell;
+    State nextState;
+
+    /**
+     *
+     * @param ruleCell
+     * @param nextState
+     */
+    public Rule(Cell ruleCell, State nextState) {
+        this.ruleCell = ruleCell;
+        this.nextState = nextState;
+    }
+
+    /**
+     *
+     * @param c
+     */
+    public void apply(Cell c) {
+
+        if (c.compare(ruleCell)) {
+            c.setNextState(nextState);
+
+        }
+
+    }
+
 }

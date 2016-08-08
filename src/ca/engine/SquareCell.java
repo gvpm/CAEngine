@@ -34,6 +34,7 @@ public class SquareCell extends Cell {
 
     /**
      *
+     * @param current
      * @param nw
      * @param n
      * @param ne
@@ -43,9 +44,10 @@ public class SquareCell extends Cell {
      * @param sw
      * @param w
      */
-    public void initRuleCell(State nw, State n, State ne, State e, State se, State s, State sw, State w) {
+    public void initRuleCell(State current, State nw, State n, State ne, State e, State se, State s, State sw, State w) {
 
         if (this.isRuleCell()) {
+            this.currentState = current;
             this.nwSt = nw;
             this.nSt = n;
             this.neSt = ne;

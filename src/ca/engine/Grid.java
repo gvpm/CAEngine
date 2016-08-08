@@ -130,4 +130,25 @@ public abstract class Grid {
 
     }
 
+    /**
+     *
+     * @param r
+     */
+    public void applyRule(Rule r) {
+        for (int i = 0; i < cells.size(); i++) {
+            r.apply(cells.get(i));
+
+        }
+
+    }
+
+    /**
+     *
+     */
+    public void updateGrid() {
+        for (int i = 0; i < cells.size(); i++) {
+            cells.get(i).updateCell();
+        }
+    }
+
 }

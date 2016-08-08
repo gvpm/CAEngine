@@ -23,17 +23,21 @@ public class CAEngine {
 
     GridFactory gridFac;
     StateFactory stateFac;
+    CellFactory cellFac;
     //set up the inicial parameters for the engine
     //receives the parameters for the grid
     Grid grid;
 
     ArrayList<State> states;
+    ArrayList<Rule> rules;
 
     /**
      *
      */
     public CAEngine() {
         states = new ArrayList<State>();
+        rules = new ArrayList<Rule>();
+
     }
 
     /**
@@ -54,6 +58,7 @@ public class CAEngine {
         this.nOfColumns = nOfColumns;
         gridFac = new GridFactory();
         stateFac = new StateFactory();
+        cellFac = new CellFactory();
         //creates the proper grid
         createGrid();
     }
@@ -69,6 +74,33 @@ public class CAEngine {
         grid.setNeighbours();
         grid.printNeighbours(2);
 
+    }
+    //the rule that checks if a cell and its neghjbours are in a determinate state
+
+    /**
+     *
+     * @param ruleCell
+     * @param nextState
+     * @return
+     */
+    public Rule createImageRule(Cell ruleCell, State nextState) {
+
+        Rule r = new Rule(ruleCell, nextState);
+        rules.add(r);
+        return r;
+
+    }
+    //creates a rule cell to be initialized outside the engine and used later in the rule
+
+    /**
+     *
+     * @param cellType
+     * @param gridType
+     * @return
+     */
+    public Cell createRuleCell(int cellType, int gridType) {
+
+        return cellFac.fabricate(cellType, gridType, true);
     }
 
     //creates and setup the grid;
@@ -97,7 +129,12 @@ public class CAEngine {
      *
      */
     public void iterate() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
+        for (int i = 0; i < rules.size(); i++) {
+            grid.applyRule(rules.get(i));
+
+        }
+        grid.updateGrid();
 
     }
 

@@ -220,41 +220,81 @@ public class SquareGrid extends Grid {
         return r;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isOnNorthEdge(int id) {
 
         return id <= columns - 1;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isOnEastEdge(int id) {
 
         return (id + 1) % columns == 0;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isOnSouthEdge(int id) {
 
         return id >= cells.size() - columns;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isOnWestEdge(int id) {
 
         return id % columns == 0;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isNorthWestCorner(int id) {
 
         return isOnNorthEdge(id) && isOnWestEdge(id);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isNorthEastCorner(int id) {
 
         return isOnNorthEdge(id) && isOnEastEdge(id);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isSouthEastCorner(int id) {
 
         return isOnSouthEdge(id) && isOnEastEdge(id);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean isSouthWestCorner(int id) {
 
         return isOnSouthEdge(id) && isOnWestEdge(id);

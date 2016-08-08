@@ -63,7 +63,7 @@ public class SquareGrid extends Grid {
             for (int i = 0; i < cells.size(); i++) {
                 c = (SquareCell) cells.get(i);
 
-                //in on the middle
+                //id on the middle
                 if (nOfEdges(i) == 0) {
                     nw = i - columns - 1;
                     n = i - columns;
@@ -83,12 +83,35 @@ public class SquareGrid extends Grid {
                     c.setSouthWestNeighbour((SquareCell) cells.get(sw));
                     c.setWestNeighbour((SquareCell) cells.get(w));
 
+                    //case where is in edge but not corner    
+                } else if (nOfEdges(i) == 1) {
+
+                    if (isOnNorthEdge(i)) {
+
+                    } else if (isOnEastEdge(i)) {
+
+                    } else if (isOnSouthEdge(i)) {
+
+                    } else if (isOnWestEdge(i)) {
+
+                    }
+                    //case where is in one of the 4     
                 } else {
+                    
+                    if(isNorthWestCorner(i)){
+                        
+                    }else if(isNorthEastCorner(i)){
+                        
+                    }else if(isSouthEastCorner(i)){
+                        
+                    }else if(isSouthWestCorner(i)){
+                        
+                    }
 
                 }
 
             }
-
+            //case for other types of boundaries
         } else {
 
             throw new UnsupportedOperationException("Boundarie Not supported"); //To change body of generated methods, choose Tools | Templates.
@@ -143,6 +166,26 @@ public class SquareGrid extends Grid {
     public boolean isOnWestEdge(int id) {
 
         return id % columns == 0;
+    }
+
+    public boolean isNorthWestCorner(int id) {
+
+        return isOnNorthEdge(id) && isOnWestEdge(id);
+    }
+
+    public boolean isNorthEastCorner(int id) {
+
+        return isOnNorthEdge(id) && isOnEastEdge(id);
+    }
+
+    public boolean isSouthEastCorner(int id) {
+
+        return isOnSouthEdge(id) && isOnEastEdge(id);
+    }
+
+    public boolean isSouthWestCorner(int id) {
+
+        return isOnSouthEdge(id) && isOnWestEdge(id);
     }
 
     /**

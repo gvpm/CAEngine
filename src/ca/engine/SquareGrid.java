@@ -62,6 +62,14 @@ public class SquareGrid extends Grid {
 
             for (int i = 0; i < cells.size(); i++) {
                 c = (SquareCell) cells.get(i);
+                nw = i - columns - 1;
+                n = i - columns;
+                ne = i - columns + 1;
+                e = i + 1;
+                se = i + columns + 1;
+                s = i + columns;
+                sw = i + columns - 1;
+                w = i - 1;
 
                 //id on the middle
                 if (nOfEdges(i) == 0) {
@@ -87,25 +95,89 @@ public class SquareGrid extends Grid {
                 } else if (nOfEdges(i) == 1) {
 
                     if (isOnNorthEdge(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
 
                     } else if (isOnEastEdge(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
 
                     } else if (isOnSouthEdge(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
 
                     } else if (isOnWestEdge(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
 
                     }
                     //case where is in one of the 4     
-                } else {
+                } else if (nOfEdges(i) > 1) {
                     
-                    if(isNorthWestCorner(i)){
-                        
-                    }else if(isNorthEastCorner(i)){
-                        
-                    }else if(isSouthEastCorner(i)){
-                        
-                    }else if(isSouthWestCorner(i)){
-                        
+                    if (isNorthWestCorner(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
+
+                    } else if (isNorthEastCorner(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
+
+                    } else if (isSouthEastCorner(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
+
+                    } else if (isSouthWestCorner(i)) {
+                        nw = i - columns - 1;
+                        n = i - columns;
+                        ne = i - columns + 1;
+                        e = i + 1;
+                        se = i + columns + 1;
+                        s = i + columns;
+                        sw = i + columns - 1;
+                        w = i - 1;
+
                     }
 
                 }

@@ -16,7 +16,7 @@ public class CAEngine {
     int gridType;
     int cellType;
     int stateType;
-    //1 for absorbing
+    //1 circular
     int boundariesType;
     int nOfRows;
     int nOfColumns;
@@ -49,6 +49,7 @@ public class CAEngine {
         this.gridType = gridType;
         this.cellType = cellType;
         this.stateType = stateType;
+        this.boundariesType=boundariesType;
         this.nOfRows = nOfRows;
         this.nOfColumns = nOfColumns;
         gridFac = new GridFactory();

@@ -51,42 +51,50 @@ public class SquareGrid extends Grid {
      */
     @Override
     public void setNeighbours() {
-        setNeighboursNull();
-        SquareCell c;
 
-        int nw, n, ne, e, se, s, sw, w;
+        //Case of circular 
+        if (engine.getBoundariesType() == 1) {
 
-        for (int i = 0; i < cells.size(); i++) {
-            c = (SquareCell) cells.get(i);
-            nw = i - columns - 1;
-            n = i - columns;
-            ne = i - columns + 1;
-            e = i + 1;
-            se = i + columns + 1;
-            s = i + columns;
-            sw = i + columns - 1;
-            w = i - 1;
-            //in on the middle
-            if (nOfEdges(i) == 0) {
-                
+            setNeighboursNull();
+            SquareCell c;
 
-                c.setNorthWestNeighbour((SquareCell)cells.get(nw));
-                c.setNorthNeighbour((SquareCell)cells.get(n));
-                c.setNorthEastNeighbour((SquareCell)cells.get(ne));
-                c.setEastNeighbour((SquareCell)cells.get(e));
-                c.setSouthEastNeighbour((SquareCell)cells.get(se));
-                c.setSouthNeighbour((SquareCell)cells.get(s));
-                c.setSouthWestNeighbour((SquareCell)cells.get(sw));
-                c.setWestNeighbour((SquareCell)cells.get(w));
+            int nw, n, ne, e, se, s, sw, w;
 
-            } 
-            else {
+            for (int i = 0; i < cells.size(); i++) {
+                c = (SquareCell) cells.get(i);
+
+                //in on the middle
+                if (nOfEdges(i) == 0) {
+                    nw = i - columns - 1;
+                    n = i - columns;
+                    ne = i - columns + 1;
+                    e = i + 1;
+                    se = i + columns + 1;
+                    s = i + columns;
+                    sw = i + columns - 1;
+                    w = i - 1;
+
+                    c.setNorthWestNeighbour((SquareCell) cells.get(nw));
+                    c.setNorthNeighbour((SquareCell) cells.get(n));
+                    c.setNorthEastNeighbour((SquareCell) cells.get(ne));
+                    c.setEastNeighbour((SquareCell) cells.get(e));
+                    c.setSouthEastNeighbour((SquareCell) cells.get(se));
+                    c.setSouthNeighbour((SquareCell) cells.get(s));
+                    c.setSouthWestNeighbour((SquareCell) cells.get(sw));
+                    c.setWestNeighbour((SquareCell) cells.get(w));
+
+                } else {
+
+                }
 
             }
 
+        } else {
+
+            throw new UnsupportedOperationException("Boundarie Not supported"); //To change body of generated methods, choose Tools | Templates.
+
         }
 
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -117,6 +125,26 @@ public class SquareGrid extends Grid {
         return r;
     }
 
+    public boolean isOnNorthEdge(int id) {
+
+        return id <= columns - 1;
+    }
+
+    public boolean isOnEastEdge(int id) {
+
+        return (id + 1) % columns == 0;
+    }
+
+    public boolean isOnSouthEdge(int id) {
+
+        return id >= cells.size() - columns;
+    }
+
+    public boolean isOnWestEdge(int id) {
+
+        return id % columns == 0;
+    }
+
     /**
      *
      */
@@ -143,19 +171,15 @@ public class SquareGrid extends Grid {
      */
     @Override
     public void printNeighbours(int id) {
-        SquareCell c = (SquareCell)cells.get(id);
-        
+        SquareCell c = (SquareCell) cells.get(id);
+
         //System.out.println(c.getNorthWestNeighbour().idString());
-
-        
-        System.out.println(c.getNorthWestNeighbour().idString()+" "+c.getNorthNeighbour().idString()+" "+c.getNorthEastNeighbour().idString());
+        System.out.println(c.getNorthWestNeighbour().idString() + " " + c.getNorthNeighbour().idString() + " " + c.getNorthEastNeighbour().idString());
         System.out.println("");
-        System.out.println(c.getWestNeighbour().idString()+" "+c.idString()+" "+c.getEastNeighbour().idString());
+        System.out.println(c.getWestNeighbour().idString() + " " + c.idString() + " " + c.getEastNeighbour().idString());
         System.out.println("");
-        System.out.println(c.getSouthWestNeighbour().idString()+" "+c.getSouthNeighbour().idString()+" "+c.getSouthEastNeighbour().idString());
+        System.out.println(c.getSouthWestNeighbour().idString() + " " + c.getSouthNeighbour().idString() + " " + c.getSouthEastNeighbour().idString());
 
-
-        
     }
 
 }

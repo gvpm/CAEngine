@@ -93,11 +93,13 @@ public class SquareGrid extends Grid {
 
                     //case where is in edge but not corner    
                 } else if (nOfEdges(i) == 1) {
-
+                    //set
                     if (isOnNorthEdge(i)) {
-                        nw = i - columns - 1;
-                        n = i - columns;
-                        ne = i - columns + 1;
+
+                        n = i + ((rows - 1) * columns);//
+                        nw = n - 1;//
+                        ne = n + 1;//
+                        
                         e = i + 1;
                         se = i + columns + 1;
                         s = i + columns;
@@ -107,53 +109,69 @@ public class SquareGrid extends Grid {
                     } else if (isOnEastEdge(i)) {
                         nw = i - columns - 1;
                         n = i - columns;
-                        ne = i - columns + 1;
-                        e = i + 1;
-                        se = i + columns + 1;
                         s = i + columns;
                         sw = i + columns - 1;
                         w = i - 1;
+                        e = i - (columns - 1);//
+                        ne = e - columns;//
+                        //ne=i;
+                        se = e + columns;//
 
                     } else if (isOnSouthEdge(i)) {
                         nw = i - columns - 1;
                         n = i - columns;
                         ne = i - columns + 1;
                         e = i + 1;
-                        se = i + columns + 1;
-                        s = i + columns;
-                        sw = i + columns - 1;
+                        s = i - ((rows - 1) * columns);//
+                        se = s + 1;//
+                        sw = s - 1;//
                         w = i - 1;
-
+                        //set
                     } else if (isOnWestEdge(i)) {
-                        nw = i - columns - 1;
+
                         n = i - columns;
                         ne = i - columns + 1;
                         e = i + 1;
                         se = i + columns + 1;
                         s = i + columns;
-                        sw = i + columns - 1;
-                        w = i - 1;
+                        w = i + (columns - 1);//
+                        //nw = i -1;// 
+                        nw = w - columns;//                        
+                        //sw = i + ((2*columns)-1);//
+                        sw = w + columns;//
 
                     }
+
+                    c.setNorthWestNeighbour((SquareCell) cells.get(nw));
+                    c.setNorthNeighbour((SquareCell) cells.get(n));
+                    c.setNorthEastNeighbour((SquareCell) cells.get(ne));
+                    c.setEastNeighbour((SquareCell) cells.get(e));
+                    c.setSouthEastNeighbour((SquareCell) cells.get(se));
+                    c.setSouthNeighbour((SquareCell) cells.get(s));
+                    c.setSouthWestNeighbour((SquareCell) cells.get(sw));
+                    c.setWestNeighbour((SquareCell) cells.get(w));
+                    
                     //case where is in one of the 4     
                 } else if (nOfEdges(i) > 1) {
-                    
+
                     if (isNorthWestCorner(i)) {
-                        nw = i - columns - 1;
-                        n = i - columns;
-                        ne = i - columns + 1;
+                        nw = i ;
+                        n = i;
+                        ne = i ;                        
+                        sw = i;
+                        w = i;
+                        
                         e = i + 1;
                         se = i + columns + 1;
                         s = i + columns;
-                        sw = i + columns - 1;
-                        w = i - 1;
 
                     } else if (isNorthEastCorner(i)) {
-                        nw = i - columns - 1;
-                        n = i - columns;
-                        ne = i - columns + 1;
-                        e = i + 1;
-                        se = i + columns + 1;
+                        nw = i ;
+                        n = i ;
+                        ne = i ;
+                        e = i ;
+                        se = i ;
+                        
                         s = i + columns;
                         sw = i + columns - 1;
                         w = i - 1;
@@ -161,22 +179,26 @@ public class SquareGrid extends Grid {
                     } else if (isSouthEastCorner(i)) {
                         nw = i - columns - 1;
                         n = i - columns;
-                        ne = i - columns + 1;
-                        e = i + 1;
-                        se = i + columns + 1;
-                        s = i + columns;
-                        sw = i + columns - 1;
                         w = i - 1;
+                        
+                        ne = i;
+                        e = i ;
+                        se = i;
+                        s = i ;
+                        sw = i;
+                        
 
                     } else if (isSouthWestCorner(i)) {
-                        nw = i - columns - 1;
+                        
                         n = i - columns;
                         ne = i - columns + 1;
                         e = i + 1;
-                        se = i + columns + 1;
-                        s = i + columns;
-                        sw = i + columns - 1;
-                        w = i - 1;
+                        
+                        se = i;
+                        s = i ;
+                        sw = i;
+                        w = i ;
+                        nw = i;
 
                     }
 

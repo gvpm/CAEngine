@@ -12,53 +12,51 @@ import java.util.ArrayList;
  * @author gvpm
  */
 public abstract class Cell {
+
     //1=square cell
     //
     int type;
     //State state;
     //id
     int id;
-   
+
     State currentState;
     State nextState;
     ArrayList<State> stateHistory;
-    
+
     boolean hasNewState;
-    
+
     //The cell with the rule type will only have the states of the neighbours
     boolean rule;
-    
+
     /**
      *
      * @param id
      * @param rule
      */
-    public Cell(int id,boolean rule) {
+    public Cell(int id, boolean rule) {
         this.id = id;
-        this.rule=rule;
+        this.rule = rule;
         hasNewState = false;
     }
-    
-        
+
     //--------Getters and Setters
-
     /**
      *
      */
-    
-    public void flagNewState(){
+    public void flagNewState() {
         hasNewState = true;
-        
+
     }
 
     /**
      *
      */
-    public void unFlagNewState(){
+    public void unFlagNewState() {
         hasNewState = false;
-        
+
     }
-    
+
     /**
      *
      * @return
@@ -66,7 +64,7 @@ public abstract class Cell {
     public boolean hasNewState() {
         return hasNewState;
     }
-    
+
     /**
      *
      * @return
@@ -123,79 +121,64 @@ public abstract class Cell {
         this.nextState = nextState;
         flagNewState();
     }
-    
-    //--------Others
 
+    //--------Others
     /**
      *
      * @param c
      * @return
      */
-    
-    public boolean typeMatch (Cell c){
-        return c.getId()==this.getId();
-        
+    public boolean typeMatch(Cell c) {
+        return c.getId() == this.getId();
+
     }
-    
+
     /**
      *
      * @return
      */
-    public boolean isRuleCell(){
+    public boolean isRuleCell() {
         return rule;
-        
+
     }
     //change this to put history
-    
-    //will update the cell, unflags the changes, current becomes new, new becomes null
 
+    //will update the cell, unflags the changes, current becomes new, new becomes null
     /**
      *
      */
-    public void updateCell(){
-        if(hasNewState()){
+    public void updateCell() {
+        if (hasNewState()) {
             unFlagNewState();
             currentState = nextState;
             nextState = null;
-            
-            
+
         }
-        
+
     }
-    
-    public String toString(){
-        
+
+    public String toString() {
+
         return currentState.toString();
-         
-        
+
     }
 
     /**
      *
      * @return
      */
-    public String idString(){
-        
-        return Integer.toString(id);
-         
-        
-    }
-    
-    
-    
-    //--------Abstracts
+    public String idString() {
 
+        return Integer.toString(id);
+
+    }
+
+    //--------Abstracts
     /**
      *
      * @param c
      * @return
      */
-    
-    public abstract boolean compare (Cell c);
-    
-    
-    
-    
-    
-    
+    public abstract boolean compare(Cell c);
+
 }

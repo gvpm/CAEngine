@@ -12,14 +12,15 @@ import java.util.ArrayList;
  * @author gvpm
  */
 public abstract class Grid {
+
     CAEngine engine;
-    
+
     ArrayList<Cell> cells;
-    
+
     int type;
-    int rows,columns;
+    int rows, columns;
     int nOfCells;
-    
+
     CellFactory cellFac = new CellFactory();
 
     /**
@@ -30,50 +31,49 @@ public abstract class Grid {
         this.engine = engine;
         cells = new ArrayList<Cell>();
     }
-    
+
     /**
      *
      * @param rows
      * @param columns
      */
-    public abstract void setupGrid(int rows,int  columns);
-    
-    /**
-     *
-     */
-    public abstract void initGrid();
-    
-    /**
-     *
-     * @param c
-     */
-    public void addCell(Cell c){
-        cells.add(c);
-    }
-    
-    //loads the first state into all the cells
+    public abstract void setupGrid(int rows, int columns);
 
     /**
      *
      */
-    public void loadDefaultStates(){
-        if(!engine.getStates().isEmpty()){
-            if(!cells.isEmpty()){
-                
+    public abstract void initGrid();
+
+    /**
+     *
+     * @param c
+     */
+    public void addCell(Cell c) {
+        cells.add(c);
+    }
+
+    //loads the first state into all the cells
+    /**
+     *
+     */
+    public void loadDefaultStates() {
+        if (!engine.getStates().isEmpty()) {
+            if (!cells.isEmpty()) {
+
                 for (int i = 0; i < cells.size(); i++) {
                     cells.get(i).setCurrentState(engine.getStates().get(0));
-                    
+
                 }
-                
-            }else{
+
+            } else {
                 throw new UnsupportedOperationException("Init grid fisrt");
             }
-            
-        }else{
+
+        } else {
             throw new UnsupportedOperationException("No  states created");
-            
+
         }
-        
+
     }
     //SET NAIGHBOURS ACORDING TO BAUNDARIES
 
@@ -81,56 +81,53 @@ public abstract class Grid {
      *
      */
     public abstract void setNeighbours();
-    
+
     /**
      *
      * @param id
      */
     public abstract void printNeighbours(int id);
-    
+
     /**
      *
      * @return
      */
-    public String lineString(){
+    public String lineString() {
         String r;
-        r=null;
+        r = null;
         for (int i = 0; i < cells.size(); i++) {
-            if(i==0){
-                
-                r=cells.get(0).toString();
-            }else{
-            r = r+" "+cells.get(i).toString();
+            if (i == 0) {
+
+                r = cells.get(0).toString();
+            } else {
+                r = r + " " + cells.get(i).toString();
             }
-            
-            
+
         }
         //r=cells.get(0).toString();
         return r;
-        
+
     }
-    
+
     /**
      *
      * @return
      */
-    public String idString(){
+    public String idString() {
         String r;
-        r=null;
+        r = null;
         for (int i = 0; i < cells.size(); i++) {
-            if(i==0){
-                
-                r=cells.get(0).idString();
-            }else{
-            r = r+" "+cells.get(i).idString();
+            if (i == 0) {
+
+                r = cells.get(0).idString();
+            } else {
+                r = r + " " + cells.get(i).idString();
             }
-            
-            
+
         }
         //r=cells.get(0).toString();
         return r;
-        
+
     }
-    
-    
+
 }

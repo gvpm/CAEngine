@@ -10,26 +10,26 @@ package ca.engine;
  * @author gvpm
  */
 public class StateFactory {
-    
+
     /**
      *
      * @param type
      * @param value
      * @return
      */
-    public State fabricate(int type, Object value){
-        
+    public State fabricate(int type, Object value) {
+
         switch (type) {
-            case 1:                
-                return new IntState((int)value);
+            case 1:
+                return new IntState((int) value);
             case 2:
                 return null;
             case 3:
-                return null;    
-         
+                return null;
+
         }
 
         return null;
     }
-    
+
 }

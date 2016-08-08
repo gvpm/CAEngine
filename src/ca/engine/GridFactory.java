@@ -10,26 +10,26 @@ package ca.engine;
  * @author gvpm
  */
 public class GridFactory {
-    
+
     /**
      *
      * @param type
      * @param engine
      * @return
      */
-    public Grid fabricate(int type,CAEngine engine){
-        
+    public Grid fabricate(int type, CAEngine engine) {
+
         switch (type) {
             case 1:
                 return new SquareGrid(engine);
             case 2:
                 return null;
             case 3:
-                return null;    
-         
+                return null;
+
         }
 
         return null;
     }
-    
+
 }

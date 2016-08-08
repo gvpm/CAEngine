@@ -82,15 +82,6 @@ public class SquareGrid extends Grid {
                     sw = i + columns - 1;
                     w = i - 1;
 
-                    c.setNorthWestNeighbour((SquareCell) cells.get(nw));
-                    c.setNorthNeighbour((SquareCell) cells.get(n));
-                    c.setNorthEastNeighbour((SquareCell) cells.get(ne));
-                    c.setEastNeighbour((SquareCell) cells.get(e));
-                    c.setSouthEastNeighbour((SquareCell) cells.get(se));
-                    c.setSouthNeighbour((SquareCell) cells.get(s));
-                    c.setSouthWestNeighbour((SquareCell) cells.get(sw));
-                    c.setWestNeighbour((SquareCell) cells.get(w));
-
                     //case where is in edge but not corner    
                 } else if (nOfEdges(i) == 1) {
                     //set
@@ -99,7 +90,7 @@ public class SquareGrid extends Grid {
                         n = i + ((rows - 1) * columns);//
                         nw = n - 1;//
                         ne = n + 1;//
-                        
+
                         e = i + 1;
                         se = i + columns + 1;
                         s = i + columns;
@@ -114,7 +105,6 @@ public class SquareGrid extends Grid {
                         w = i - 1;
                         e = i - (columns - 1);//
                         ne = e - columns;//
-                        //ne=i;
                         se = e + columns;//
 
                     } else if (isOnSouthEdge(i)) {
@@ -135,43 +125,32 @@ public class SquareGrid extends Grid {
                         se = i + columns + 1;
                         s = i + columns;
                         w = i + (columns - 1);//
-                        //nw = i -1;// 
                         nw = w - columns;//                        
-                        //sw = i + ((2*columns)-1);//
                         sw = w + columns;//
 
                     }
 
-                    c.setNorthWestNeighbour((SquareCell) cells.get(nw));
-                    c.setNorthNeighbour((SquareCell) cells.get(n));
-                    c.setNorthEastNeighbour((SquareCell) cells.get(ne));
-                    c.setEastNeighbour((SquareCell) cells.get(e));
-                    c.setSouthEastNeighbour((SquareCell) cells.get(se));
-                    c.setSouthNeighbour((SquareCell) cells.get(s));
-                    c.setSouthWestNeighbour((SquareCell) cells.get(sw));
-                    c.setWestNeighbour((SquareCell) cells.get(w));
-                    
                     //case where is in one of the 4     
                 } else if (nOfEdges(i) > 1) {
-
+                    //set
                     if (isNorthWestCorner(i)) {
-                        nw = i ;
-                        n = i;
-                        ne = i ;                        
-                        sw = i;
-                        w = i;
-                        
+                        nw = i + (rows * columns) - 1;//
+                        n = i + ((rows - 1) * columns);//
+                        ne = n + 1;//  
+                        w = i + (columns - 1);//
+                        sw = w + columns;//
+
                         e = i + 1;
                         se = i + columns + 1;
                         s = i + columns;
-
+                        //set
                     } else if (isNorthEastCorner(i)) {
-                        nw = i ;
-                        n = i ;
-                        ne = i ;
-                        e = i ;
-                        se = i ;
-                        
+                        ne = (i - (columns - 1)) + (((rows * columns) - 1) - (columns - 1));//
+                        n = i + ((rows - 1) * columns);//
+                        nw = n - 1;               //                                
+                        e = i - (columns - 1);//                        
+                        se = e + columns;//
+
                         s = i + columns;
                         sw = i + columns - 1;
                         w = i - 1;
@@ -180,29 +159,37 @@ public class SquareGrid extends Grid {
                         nw = i - columns - 1;
                         n = i - columns;
                         w = i - 1;
-                        
-                        ne = i;
-                        e = i ;
-                        se = i;
-                        s = i ;
-                        sw = i;
-                        
+
+                        se = i - ((rows * columns) - 1);//
+                        e = i - (columns - 1);//
+                        ne = e - columns;//                                               
+                        s = i - ((rows - 1) * columns);//                       
+                        sw = s - 1;//
 
                     } else if (isSouthWestCorner(i)) {
-                        
+
                         n = i - columns;
                         ne = i - columns + 1;
                         e = i + 1;
-                        
-                        se = i;
-                        s = i ;
-                        sw = i;
-                        w = i ;
-                        nw = i;
+                        //jumps all the way to the end of the line and comes back everything   
+                        sw = (i + (columns - 1)) - (((rows * columns) - 1) - (columns - 1));
+                        s = i - ((rows - 1) * columns);//
+                        se = s + 1;// 
+                        //se=i;
+                        w = i + (columns - 1);//
+                        nw = w - columns;//
 
                     }
 
                 }
+                c.setNorthWestNeighbour((SquareCell) cells.get(nw));
+                c.setNorthNeighbour((SquareCell) cells.get(n));
+                c.setNorthEastNeighbour((SquareCell) cells.get(ne));
+                c.setEastNeighbour((SquareCell) cells.get(e));
+                c.setSouthEastNeighbour((SquareCell) cells.get(se));
+                c.setSouthNeighbour((SquareCell) cells.get(s));
+                c.setSouthWestNeighbour((SquareCell) cells.get(sw));
+                c.setWestNeighbour((SquareCell) cells.get(w));
 
             }
             //case for other types of boundaries

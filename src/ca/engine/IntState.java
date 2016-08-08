@@ -10,6 +10,7 @@ package ca.engine;
  * @author gvpm
  */
 public class IntState extends State {
+
     int value;
 
     /**
@@ -17,9 +18,9 @@ public class IntState extends State {
      * @param value
      */
     public IntState(int value) {
-        this.type=1;
-        this.value=value;
-        
+        this.type = 1;
+        this.value = value;
+
     }
 
     /**
@@ -37,7 +38,7 @@ public class IntState extends State {
     public void setValue(int value) {
         this.value = value;
     }
-    
+
     /**
      *
      * @param s
@@ -45,20 +46,19 @@ public class IntState extends State {
      */
     @Override
     public boolean compare(State s) {
-        
-        if(s.getType()==this.type){
-            IntState iS=(IntState) s;
-            return iS.getValue()==this.value;
-            
-            
+
+        if (s.getType() == this.type) {
+            IntState iS = (IntState) s;
+            return iS.getValue() == this.value;
+
         }
-        throw new UnsupportedOperationException("Wrong type"); 
+        throw new UnsupportedOperationException("Wrong type");
     }
-    
+
     @Override
-    public String toString (){
-        
+    public String toString() {
+
         return Integer.toString(value);
     }
-    
+
 }

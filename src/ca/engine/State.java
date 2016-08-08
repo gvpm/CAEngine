@@ -10,16 +10,17 @@ package ca.engine;
  * @author gvpm
  */
 public abstract class State {
+
     int type;
     //1= int state
-    
+
     /**
      *
      */
     public State() {
-        
+
     }
-    
+
     /**
      *
      * @return
@@ -27,18 +28,14 @@ public abstract class State {
     public int getType() {
         return type;
     }
-    
+
     /**
      *
      * @param s
      * @return
      */
-    public abstract boolean compare (State s);
-    
+    public abstract boolean compare(State s);
+
     public abstract String toString();
-    
-    
-    
-   
-    
+
 }

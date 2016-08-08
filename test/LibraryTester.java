@@ -16,12 +16,12 @@ public class LibraryTester {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CAEngine e =  new CAEngine();
-        e.setup(1, 1, 1,1, 3, 3);
+        CAEngine e = new CAEngine();
+        e.setup(1, 1, 1, 1, 3, 3);
         e.createState(1, 0);
         e.init();
         System.out.println(e.lineString());
         System.out.println(e.idString());
     }
-    
+
 }

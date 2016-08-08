@@ -10,5 +10,5 @@ package ca.engine;
  * @author gvpm
  */
 public class Rule {
-    
+
 }

@@ -10,7 +10,7 @@ package ca.engine;
  * @author gvpm
  */
 public class CellFactory {
-    
+
     /**
      *
      * @param type
@@ -18,19 +18,19 @@ public class CellFactory {
      * @param rule
      * @return
      */
-    public Cell fabricate(int type,int id,boolean rule){
-        
+    public Cell fabricate(int type, int id, boolean rule) {
+
         switch (type) {
-            case 1:                
-                return new SquareCell(id,rule);
+            case 1:
+                return new SquareCell(id, rule);
             case 2:
                 return null;
             case 3:
-                return null;    
-         
+                return null;
+
         }
 
         return null;
     }
-    
+
 }

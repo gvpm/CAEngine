@@ -17,7 +17,7 @@ public class LibraryTester {
      */
     public static void main(String[] args) {
         CAEngine e = new CAEngine();
-        e.setup(1, 1, 1, 1, 3, 3);
+        e.setup(1, 1, 1, 1, 10, 10);
 
         State stateOne = e.createState(1, 1);
         State stateZero = e.createState(1, 0);
@@ -28,13 +28,27 @@ public class LibraryTester {
 
         e.createImageRule(rule1Cell, stateZero);
 
-        System.out.println(e.lineString());
-        System.out.println(e.idString());
+        //System.out.println(e.stateString());
+        //System.out.println(e.idString());
+        System.out.println("ID Matrix");
+        System.out.println(e.idMatrix());
 
+        System.out.println("");
+        System.out.println("States Matrix");
+        System.out.println("");
+        System.out.println(e.stateMatrix());
+
+        System.out.println("");
+        System.out.println("Iteration");
+        System.out.println("");
         e.iterate();
 
-        System.out.println(e.lineString());
-        System.out.println(e.idString());
+        //System.out.println(e.stateString());
+        //System.out.println(e.idString());
+        System.out.println("");
+        System.out.println("States Matrix");
+        System.out.println("");
+        System.out.println(e.stateMatrix());
 
     }
 

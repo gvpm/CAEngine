@@ -132,6 +132,10 @@ public abstract class Grid {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String idMatrix() {
         String resp = null;
         String spliter = " ";
@@ -156,6 +160,10 @@ public abstract class Grid {
         return resp;
     }
 
+    /**
+     *
+     * @return
+     */
     public String stateMatrix() {
         String resp = null;
         String spliter = " ";

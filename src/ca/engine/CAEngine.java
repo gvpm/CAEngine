@@ -72,7 +72,7 @@ public class CAEngine {
         grid.initGrid();
         grid.loadDefaultStates();
         grid.setNeighbours();
-        grid.printNeighbours(2);
+        //grid.printNeighbours(9);
 
     }
     //the rule that checks if a cell and its neghjbours are in a determinate state
@@ -184,9 +184,9 @@ public class CAEngine {
      *
      * @return
      */
-    public String lineString() {
+    public String stateString() {
 
-        return grid.lineString();
+        return grid.stateString();
     }
 
     /**
@@ -196,6 +196,21 @@ public class CAEngine {
     public String idString() {
 
         return grid.idString();
+    }
+
+    public String idMatrix() {
+
+        return grid.idMatrix();
+    }
+
+    public String stateMatrix() {
+
+        return grid.stateMatrix();
+    }
+
+    public void printNeighbours(int id) {
+
+        grid.printNeighbours(id);
     }
 
     /**

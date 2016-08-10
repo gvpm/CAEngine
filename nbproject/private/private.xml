@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/SquareCell.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/IntState.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/GridFactory.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/Grid.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/StateFactory.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/CAEngine.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/State.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/Cell.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/CellFactory.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/Rule.java</file>
-            <file>file:/home/gvpm/NetBeansProjects/CAEngine/src/ca/engine/SquareGrid.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -92,7 +92,7 @@ public abstract class Grid {
      *
      * @return
      */
-    public String lineString() {
+    public String stateString() {
         String r;
         r = null;
         for (int i = 0; i < cells.size(); i++) {
@@ -101,6 +101,7 @@ public abstract class Grid {
                 r = cells.get(0).toString();
             } else {
                 r = r + " " + cells.get(i).toString();
+
             }
 
         }
@@ -122,12 +123,61 @@ public abstract class Grid {
                 r = cells.get(0).idString();
             } else {
                 r = r + " " + cells.get(i).idString();
+
             }
 
         }
         //r=cells.get(0).toString();
         return r;
 
+    }
+
+    public String idMatrix() {
+        String resp = null;
+        String spliter = " ";
+        String idString = idString();
+        String[] idSplit = idString.split(spliter);
+        int cont = 0;
+
+        for (int i = 0; i < idSplit.length; i++) {
+            if (i == 0) {
+                resp = idSplit[0];
+
+            } else if (cont < (columns - 1)) {
+                resp = resp + "  " + idSplit[i];
+                cont++;
+            } else {
+                resp = resp + "\n" + idSplit[i];
+                cont = 0;
+
+            }
+
+        }
+        return resp;
+    }
+
+    public String stateMatrix() {
+        String resp = null;
+        String spliter = " ";
+        String stateString = stateString();
+        String[] idSplit = stateString.split(spliter);
+        int cont = 0;
+
+        for (int i = 0; i < idSplit.length; i++) {
+            if (i == 0) {
+                resp = idSplit[0];
+
+            } else if (cont < (columns - 1)) {
+                resp = resp + "  " + idSplit[i];
+                cont++;
+            } else {
+                resp = resp + "\n" + idSplit[i];
+                cont = 0;
+
+            }
+
+        }
+        return resp;
     }
 
     /**

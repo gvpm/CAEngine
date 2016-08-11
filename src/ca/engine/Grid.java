@@ -208,5 +208,10 @@ public abstract class Grid {
             cells.get(i).updateCell();
         }
     }
+    
+    public Cell getCell(int id){
+        
+        return cells.get(id);
+    }
 
 }

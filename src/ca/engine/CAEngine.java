@@ -186,6 +186,11 @@ public class CAEngine {
 
         return grid.stateString();
     }
+    
+    public String[] stateVector(){
+        
+        return stateString().split(" ");
+    }
 
     /**
      *
@@ -217,6 +222,23 @@ public class CAEngine {
      */
     public int getBoundariesType() {
         return boundariesType;
+    }
+    
+    public void changeState(int id, State s){
+        Cell c = grid.getCell(id);
+        if(c.getCurrentState().getType()==s.getType()){
+            c.setCurrentState(s);
+            
+            
+        }else {
+            throw new UnsupportedOperationException("State types dont match");
+            
+            
+        }
+            
+        
+        
+        
     }
 
 }

@@ -41,6 +41,14 @@ public class LibraryTester {
         System.out.println("");
         System.out.println("Iteration");
         System.out.println("");
+        
+        e.changeState(35, stateZero);
+        
+        System.out.println("");
+        System.out.println("States Matrix");
+        System.out.println("");
+        System.out.println(e.stateMatrix());
+
         e.iterate();
 
         //System.out.println(e.stateString());
@@ -49,7 +57,8 @@ public class LibraryTester {
         System.out.println("States Matrix");
         System.out.println("");
         System.out.println(e.stateMatrix());
-
+        
+       
     }
 
 }

@@ -88,6 +88,33 @@ public class CAEngine {
         return r;
 
     }
+
+    /**
+     * Creates quantuty rules, still need to add one state tuple for each
+     * @param currentState
+     * @param nextState
+     * @return
+     */
+    public Rule createQuantityRule(State currentState, State nextState) {
+
+        Rule r = new Rule(currentState, nextState);
+        rules.add(r);
+
+        return r;
+
+    }
+
+    /**
+     * State tuple with a state, the quantity to check and if its greater smaller o equal
+     * @param s
+     * @param quantity
+     * @param type
+     * @return
+     */
+    public StateTuple createStateTuple(State s, int quantity, int type) {
+
+        return new StateTuple(s, quantity, type);
+    }
     //creates a rule cell to be initialized outside the engine and used later in the rule
 
     /**
@@ -186,9 +213,13 @@ public class CAEngine {
 
         return grid.stateString();
     }
-    
-    public String[] stateVector(){
-        
+
+    /**
+     *
+     * @return
+     */
+    public String[] stateVector() {
+
         return stateString().split(" ");
     }
 
@@ -201,16 +232,28 @@ public class CAEngine {
         return grid.idString();
     }
 
+    /**
+     *
+     * @return
+     */
     public String idMatrix() {
 
         return grid.idMatrix();
     }
 
+    /**
+     *
+     * @return
+     */
     public String stateMatrix() {
 
         return grid.stateMatrix();
     }
 
+    /**
+     *
+     * @param id
+     */
     public void printNeighbours(int id) {
 
         grid.printNeighbours(id);
@@ -223,22 +266,22 @@ public class CAEngine {
     public int getBoundariesType() {
         return boundariesType;
     }
-    
-    public void changeState(int id, State s){
+
+    /**
+     *
+     * @param id
+     * @param s
+     */
+    public void changeState(int id, State s) {
         Cell c = grid.getCell(id);
-        if(c.getCurrentState().getType()==s.getType()){
+        if (c.getCurrentState().getType() == s.getType()) {
             c.setCurrentState(s);
-            
-            
-        }else {
+
+        } else {
             throw new UnsupportedOperationException("State types dont match");
-            
-            
+
         }
-            
-        
-        
-        
+
     }
 
 }

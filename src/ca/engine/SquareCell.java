@@ -352,4 +352,72 @@ public class SquareCell extends Cell {
         this.wSt = wSt;
     }
 
+    /**
+     *
+     * @param st
+     * @return
+     */
+    @Override
+    public boolean checkStateTuple(StateTuple st) {
+        int cont = 0;
+
+        boolean c1 = this.getNorthWestNeighbour().getCurrentState().compare(st.getState());
+        boolean c2 = this.getNorthNeighbour().getCurrentState().compare(st.getState());
+        boolean c3 = this.getNorthEastNeighbour().getCurrentState().compare(st.getState());
+        boolean c4 = this.getEastNeighbour().getCurrentState().compare(st.getState());
+        boolean c5 = this.getSouthEastNeighbour().getCurrentState().compare(st.getState());
+        boolean c6 = this.getSouthNeighbour().getCurrentState().compare(st.getState());
+        boolean c7 = this.getSouthWestNeighbour().getCurrentState().compare(st.getState());
+        boolean c8 = this.getWestNeighbour().getCurrentState().compare(st.getState());
+        if (c1) {
+
+            cont++;
+        }
+        if (c2) {
+
+            cont++;
+        }
+        if (c3) {
+
+            cont++;
+        }
+        if (c4) {
+
+            cont++;
+        }
+        if (c5) {
+
+            cont++;
+        }
+        if (c6) {
+
+            cont++;
+        }
+        if (c7) {
+
+            cont++;
+        }
+        if (c8) {
+
+            cont++;
+        }
+        //System.out.println("cout:" + cont);
+        //System.out.println("quanti:" + st.quantity);
+        switch (st.getType()) {
+            case -1:
+
+                return cont < st.quantity;
+            case 0:
+
+                return cont == st.quantity;
+
+            case 1:
+                return cont > st.quantity;
+
+        }
+
+        return false;
+
+    }
+
 }

@@ -172,8 +172,6 @@ public abstract class Cell {
         return Integer.toString(id);
 
     }
-    
-  
 
     //--------Abstracts
     /**
@@ -182,5 +180,12 @@ public abstract class Cell {
      * @return
      */
     public abstract boolean compare(Cell c);
+
+    /**
+     *
+     * @param st
+     * @return
+     */
+    public abstract boolean checkStateTuple(StateTuple st);
 
 }

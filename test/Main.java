@@ -56,14 +56,6 @@ public class Main extends PApplet {
         overPop.addStateTuple(e.createStateTuple(stateOne, 3, 1));
         reproduction.addStateTuple(e.createStateTuple(stateOne, 3, 0));
 
-        Random gen = new Random();
-
-        for (int i = 0; i < 100; i++) {
-            int randID = gen.nextInt(rows * columns);
-            e.changeState(randID, stateOne);
-
-        }
-
         grid = new SquareGrid(this);
         grid.setup(rows, columns, e);
 
@@ -101,6 +93,35 @@ public class Main extends PApplet {
         if (key == 'i') {
 
             e.iterate();
+
+        }
+        if (key == 'r') {
+
+            randomInitials();
+
+        }
+        if (key == 'c') {
+
+            clearGrid();
+
+        }
+
+    }
+
+    public void randomInitials() {
+        Random gen = new Random();
+
+        for (int i = 0; i < 100; i++) {
+            int randID = gen.nextInt(rows * columns);
+            e.changeState(randID, stateOne);
+
+        }
+
+    }
+
+    public void clearGrid() {
+        for (int i = 0; i < rows * columns; i++) {
+            e.changeState(i, stateZero);
 
         }
     }

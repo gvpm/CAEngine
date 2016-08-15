@@ -91,6 +91,7 @@ public class CAEngine {
 
     /**
      * Creates quantuty rules, still need to add one state tuple for each
+     *
      * @param currentState
      * @param nextState
      * @return
@@ -105,7 +106,9 @@ public class CAEngine {
     }
 
     /**
-     * State tuple with a state, the quantity to check and if its greater smaller o equal
+     * State tuple with a state, the quantity to check and if its greater
+     * smaller o equal
+     *
      * @param s
      * @param quantity
      * @param type
@@ -170,6 +173,16 @@ public class CAEngine {
     public ArrayList<State> getStates() {
         return states;
 
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public String getStateString(int id) {
+
+        return grid.getCell(id).toString();
     }
 
     /**

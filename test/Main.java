@@ -1,8 +1,11 @@
 
 import ca.engine.CAEngine;
 import ca.engine.Rule;
-import ca.engine.SquareCell;
 import ca.engine.State;
+import controlP5.Button;
+import controlP5.ControlP5;
+import controlP5.Slider;
+
 import java.util.Random;
 import processing.core.PApplet;
 
@@ -15,6 +18,7 @@ public class Main extends PApplet {
 
     State stateZero;
     State stateOne;
+    ControlP5 cp5;
 
     public static void main(String[] args) {
 
@@ -29,15 +33,47 @@ public class Main extends PApplet {
 
     @Override
     public void settings() {
-        size(800, 800);
-        rows = 20;
-        columns = 20;
+        size(900, 600);
+        rows = 100;
+        columns = 100;
 
     }
 
     @Override
     public void setup() {
 
+        cp5 = new ControlP5(this);
+        Button b0 = cp5.addButton("Iterate")
+                .setValue(0)
+                .setPosition(600, 0)
+                .setSize(200, 19);
+        Button b1 = cp5.addButton("Randomize")
+                .setValue(0)
+                .setPosition(600, 20)
+                .setSize(200, 19);
+        Button b2 = cp5.addButton("Clear")
+                .setValue(0)
+                .setPosition(600, 40)
+                .setSize(200, 19);
+        /*        
+        
+        
+        Slider sRows = cp5.addSlider("Rows")
+                .setPosition(620, 10)
+                .setRange(0, 200);
+                
+        
+        Slider sColumns = cp5.addSlider("Columns")
+                .setPosition(620, 30)
+                .setRange(0, 200);
+        
+        Button gen = cp5.addButton("Generate")
+                .setValue(0)
+                .setPosition(600, 50)
+                .setSize(200, 19);
+         */
+
+        //http://www.sojamo.de/libraries/controlP5/#examples
         e.setup(1, 1, 1, 1, rows, columns);
         stateZero = e.createState(1, 0);
         stateOne = e.createState(1, 1);
@@ -59,20 +95,21 @@ public class Main extends PApplet {
         grid = new SquareGrid(this);
         grid.setup(rows, columns, e);
 
-        //grid = new SquareGrid(this);
-        //grid.setup(10, 10, 10);
     }
 
     public void update() {
-
-        grid.update(e.stateVector());
+        if (grid != null) {
+            grid.update(e.stateVector());
+        }
 
     }
 
     @Override
     public void draw() {
         stroke(255);
-        grid.draw();
+        if (grid != null) {
+            grid.draw();
+        }
 
     }
 
@@ -124,6 +161,35 @@ public class Main extends PApplet {
             e.changeState(i, stateZero);
 
         }
+    }
+
+    public void Iterate(int value) {
+        e.iterate();
+
+    }
+
+    public void Randomize(int value) {
+        randomInitials();
+
+    }
+
+    public void Clear(int value) {
+        clearGrid();
+
+    }
+
+    public void Generate(int value) {
+
+    }
+
+    public void Rows(float i) {
+        rows = (int) i;
+
+    }
+
+    public void Columns(float i) {
+        columns = (int) i;
+
     }
 
 }

@@ -22,6 +22,7 @@ This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist f
 - Square Cells
 - Circular Boundary
 - Int States
+- String States
 - Image Rules
 - Quantity Rules
 
@@ -31,7 +32,7 @@ This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist f
 - Reflective Boundary
 - Absorbing Boundary
 - RGB States
-- String States
+
 ...and more
 
 ##Usage Example

@@ -5,11 +5,15 @@ java -jar "CAEngine.jar"
 
 ##Usage Example
 
+Don't forget to import
+####import ca.engine.*;
+
+
 ###Initial Setups
 
-CAEngine e = new CAEngine();
+####CAEngine e = new CAEngine();
 
-####e.setup(1, 1, 1, 1, rows, columns); 
+e.setup(1, 1, 1, 1, rows, columns); 
 Variables: (gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
 
 ####e.init();

@@ -6,8 +6,7 @@ java -jar "CAEngine.jar"
 ###Usage Example
 CAEngine e = new CAEngine();
 
-e.setup(1, 1, 1, 1, rows, columns); 
-####//(gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
+e.setup(1, 1, 1, 1, rows, columns); #####//(gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
 
 e.init();
 

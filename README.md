@@ -5,7 +5,7 @@
 
 - Set the rules
 
-- Iretate in a simple way
+- Iterate in a simple way
 
 You can run your simulations using the simple console UI.
 

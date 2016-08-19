@@ -10,7 +10,7 @@ CAEngine e = new CAEngine();
 ####e.setup(1, 1, 1, 1, rows, columns); 
 //(gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
 
-e.init();
+####e.init();
 
 ####stateZero = e.createState(1, 0);
 //(stateType, value of the state)
@@ -21,7 +21,7 @@ e.init();
 
 ####SquareCell rule1Cell = (SquareCell) e.createRuleCell(1, 1);//(cellType, stateType)
 
-/You give the state of the cell and its neighbours to be further compared with all the cells on the iteration
+//You give the state of the cell and its neighbours to be further compared with all the cells on the iteration
 
 ####rule1Cell.initRuleCell(stateOne, stateOne, stateOne, stateOne, stateOne, stateOne, stateOne, stateOne, stateOne);
 
@@ -30,7 +30,7 @@ e.init();
 //The Quantity Rule is simpler, you first create the rule stating the current state of the cell, and the next state  
 
 ####Rule underPop = e.createQuantityRule(stateOne, stateZero);
-//(Rule triggers if you have stateone and state tuple  is valid)
+//(In this case Rule triggers if you have stateone and state tuple  is valid)
 ####Rule overPop = e.createQuantityRule(stateOne, stateZero);
 ####Rule reproduction = e.createQuantityRule(stateZero, stateOne);
 
@@ -47,7 +47,7 @@ e.init();
 //+1 greater than
 
 ####underPop.addStateTuple(e.createStateTuple(stateOne, 2, -1));
-//(statetuple is valid if you have less than 2 neighbours in state one)
+//(In this case statetuple is valid if you have less than 2 neighbours in state one)
 
 ####overPop.addStateTuple(e.createStateTuple(stateOne, 3, 1));
 

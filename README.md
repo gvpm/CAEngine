@@ -2,10 +2,13 @@
 ##A Cellular Automata Java Library.
 
 Set a grid
+
 Set the rules
+
 Iretate in a simple way
 
 You can run your simulations using the simple console UI.
+
 Alternatively you can implement your own Cellular Automata Simulator with or without GUI and not worry about the backend.
 
 

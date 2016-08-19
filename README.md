@@ -10,14 +10,14 @@ java -jar "CAEngine.jar"
 CAEngine e = new CAEngine();
 
 ####e.setup(1, 1, 1, 1, rows, columns); 
-(gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
+Variables: (gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
 
 ####e.init();
 
 ###State Creation
 
 ####stateZero = e.createState(1, 0);
-(stateType, value of the state)
+Variables: (stateType, value of the state)
 
 ####stateOne = e.createState(1, 1);
 When you add a new state to the machine you can store its reference to use in rules)
@@ -25,7 +25,8 @@ When you add a new state to the machine you can store its reference to use in ru
 ###Image Rules
 To create a Image rule you need a rule cell, that is just a normal cell but it only stores the states of the neighbours.
 
-####SquareCell rule1Cell = (SquareCell) e.createRuleCell(1, 1);//(cellType, stateType)
+####SquareCell rule1Cell = (SquareCell) e.createRuleCell(1, 1);
+Variables: (cellType, stateType)
 
 You give the state of the cell and its neighbours to be further compared with all the cells on the iteration
 
@@ -38,7 +39,7 @@ You give the state of the cell and its neighbours to be further compared with al
 The Quantity Rule is simpler, you first create the rule stating the current state of the cell, and the next state  
 
 ####Rule underPop = e.createQuantityRule(stateOne, stateZero);
-(In this case Rule triggers if you have stateone and state tuple  is valid)
+In this case Rule triggers if you have stateone and state tuple  is valid
 ####Rule overPop = e.createQuantityRule(stateOne, stateZero);
 ####Rule reproduction = e.createQuantityRule(stateZero, stateOne);
 
@@ -52,7 +53,7 @@ The last variable allows you to create any type of quantity rule
 - +1 greater than
 
 ####underPop.addStateTuple(e.createStateTuple(stateOne, 2, -1));
-(In this case statetuple is valid if you have less than 2 neighbours in state one)
+In this case statetuple is valid if you have less than 2 neighbours in state one
 
 ####overPop.addStateTuple(e.createStateTuple(stateOne, 3, 1));
 

@@ -3,7 +3,9 @@
 The ConsoleTester is set by default, you can run it using:
 java -jar "CAEngine.jar" 
 
-###Usage Example
+##Usage Example
+
+###Initial Setups
 
 CAEngine e = new CAEngine();
 
@@ -12,11 +14,15 @@ CAEngine e = new CAEngine();
 
 ####e.init();
 
+###State Creation
+
 ####stateZero = e.createState(1, 0);
 //(stateType, value of the state)
 
 ####stateOne = e.createState(1, 1);
 //When you add a new state to the machine you can store its reference to use in rules)
+
+###Image Rules
 //To create a Image rule you need a rule cell, that is just a normal cell but it only stores the states of the neighbours.
 
 ####SquareCell rule1Cell = (SquareCell) e.createRuleCell(1, 1);//(cellType, stateType)
@@ -26,6 +32,8 @@ CAEngine e = new CAEngine();
 ####rule1Cell.initRuleCell(stateOne, stateOne, stateOne, stateOne, stateOne, stateOne, stateOne, stateOne, stateOne);
 
 ####e.createImageRule(rule1Cell, stateZero);
+
+###Quantity Rules
 
 //The Quantity Rule is simpler, you first create the rule stating the current state of the cell, and the next state  
 

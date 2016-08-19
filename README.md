@@ -4,15 +4,16 @@ The ConsoleTester is set by default, you can run it using:
 java -jar "CAEngine.jar" 
 
 ###Usage Example
+
 CAEngine e = new CAEngine();
 
-e.setup(1, 1, 1, 1, rows, columns); #####//(gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
+e.setup(1, 1, 1, 1, rows, columns); ####//(gridType, cellType, stateType, boundariesType, nOfRows, nOfColumns)
 
 e.init();
 
-stateZero = e.createState(1, 0);//(stateType, value of the state)
+stateZero = e.createState(1, 0);####//(stateType, value of the state)
 
-stateOne = e.createState(1, 1);//When you add a new state to the machine you can store its reference to use in rules)
+stateOne = e.createState(1, 1);####//When you add a new state to the machine you can store its reference to use in rules)
 
       
 //There are 2 types of rules, Image rules and Quantity rules.

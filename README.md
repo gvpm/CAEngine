@@ -32,6 +32,7 @@ This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist f
 - Absorbing Boundary
 - RGB States
 - String States
+...and more
 
 ##Usage Example
 

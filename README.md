@@ -17,6 +17,22 @@ java -jar "CAEngine.jar"
 
 This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist folder.
 
+##What is currently supported
+- Square Grid
+- Square Cells
+- Circular Boundary
+- Int States
+- Image Rules
+- Quantity Rules
+
+##What is planned
+- Hexagonal Grid
+- Hexagonal Cells
+- Reflective Boundary
+- Absorbing Boundary
+- RGB States
+- String States
+
 ##Usage Example
 
 Add the CAEngine.jar to your project libraries

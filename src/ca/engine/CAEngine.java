@@ -33,8 +33,8 @@ public class CAEngine {
      *
      */
     public CAEngine() {
-        states = new ArrayList<State>();
-        rules = new ArrayList<Rule>();
+        states = new ArrayList<>();
+        rules = new ArrayList<>();
 
     }
 
@@ -53,7 +53,15 @@ public class CAEngine {
         this.stateType = stateType;
         this.boundariesType = boundariesType;
         this.nOfRows = nOfRows;
+        if(nOfRows <=2){
+            throw new UnsupportedOperationException("Number of rows not supported yet Try > 2");
+        }
         this.nOfColumns = nOfColumns;
+        if(nOfColumns <=2){
+            throw new UnsupportedOperationException("Number of columns not supported yet. Try > 2");
+        }
+        
+        
         gridFac = new GridFactory();
         stateFac = new StateFactory();
         cellFac = new CellFactory();
@@ -90,7 +98,7 @@ public class CAEngine {
     }
 
     /**
-     * Creates quantuty rules, still need to add one state tuple for each
+     * Creates quantity rules, still need to add one state tuple for each
      *
      * @param currentState
      * @param nextState

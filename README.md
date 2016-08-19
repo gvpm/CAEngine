@@ -81,7 +81,7 @@ In this case statetuple is valid if you have less than 2 neighbours in state one
 ####reproduction.addStateTuple(e.createStateTuple(stateOne, 3, 0));
 
 
-###Quantity Rules
+###Other functions
 
 ####e.iterate();
 is used to do an iteration

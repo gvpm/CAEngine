@@ -129,9 +129,9 @@ public class SquareGrid extends Grid {
                         w = i;
                     } //middle
                     else if (i > 0 && i < rows - 1) {
-                        nw = i-1;
-                        n = i-1;//
-                        ne = i-1;
+                        nw = i - 1;
+                        n = i - 1;//
+                        ne = i - 1;
                         e = i;
                         se = i + 1;
                         s = i + 1;//
@@ -139,9 +139,9 @@ public class SquareGrid extends Grid {
                         w = i;
                     }//last
                     else if (i == rows - 1) {
-                        nw = i-1;
-                        n = i-1;//
-                        ne = i-1;
+                        nw = i - 1;
+                        n = i - 1;//
+                        ne = i - 1;
                         e = i;
                         se = 0;
                         s = 0;//

@@ -23,7 +23,7 @@ public class StateFactory {
             case 1:
                 return new IntState((int) value);
             case 2:
-                return null;
+                return new StringState((String) value);
             case 3:
                 return null;
 

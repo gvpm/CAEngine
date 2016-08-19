@@ -1,6 +1,4 @@
 
-
-
 import ca.engine.CAEngine;
 import java.util.ArrayList;
 import processing.core.*;

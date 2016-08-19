@@ -1,6 +1,4 @@
 
-
-
 import ca.test.*;
 import ca.engine.CAEngine;
 import ca.engine.Rule;
@@ -11,7 +9,7 @@ import controlP5.ControlP5;
 import java.util.Random;
 import processing.core.PApplet;
 
-public class UITester extends PApplet {
+public class GUI extends PApplet {
 
     SquareGrid grid;
     CAEngine e = new CAEngine();
@@ -29,7 +27,7 @@ public class UITester extends PApplet {
         //PApplet b = new PApplet();        
         //a.main(new String[]{"SquareGrid"});
         //b.main(new String[]{"Window2"});
-        PApplet.main(new String[]{"UITester"});
+        PApplet.main(new String[]{"GUI"});
 
     }
 

@@ -53,11 +53,11 @@ public class CAEngine {
         this.stateType = stateType;
         this.boundariesType = boundariesType;
         this.nOfRows = nOfRows;
-        if(nOfRows <=2){
+        if(nOfRows <=0){
             throw new UnsupportedOperationException("Number of rows not supported yet Try > 2");
         }
         this.nOfColumns = nOfColumns;
-        if(nOfColumns <=2){
+        if(nOfColumns <=0){
             throw new UnsupportedOperationException("Number of columns not supported yet. Try > 2");
         }
         

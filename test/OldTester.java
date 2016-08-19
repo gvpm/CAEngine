@@ -10,7 +10,7 @@ import ca.engine.*;
  *
  * @author gvpm
  */
-public class LibraryTester {
+public class OldTester {
 
     /**
      * @param args the command line arguments

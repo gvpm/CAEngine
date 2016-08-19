@@ -70,9 +70,87 @@ public class SquareGrid extends Grid {
                 s = i + columns;
                 sw = i + columns - 1;
                 w = i - 1;
+                //case where its only one element
+                if (rows == 1 && columns == 1) {
+                    nw = i;
+                    n = i;
+                    ne = i;
+                    e = i;
+                    se = i;
+                    s = i;
+                    sw = i;
+                    w = i;
 
-                //id on the middle
-                if (nOfEdges(i) == 0) {
+                }//case where 1 row many columns
+                else if (rows == 1 && columns > 1) {
+                    //first
+                    if (i == 0) {
+                        nw = columns - 1;
+                        n = i;//
+                        ne = i + 1;
+                        e = i + 1;
+                        se = i + 1;
+                        s = i;//
+                        sw = columns - 1;
+                        w = columns - 1;
+                    } //middle
+                    else if (i > 0 && i < columns - 1) {
+                        nw = i - 1;
+                        n = i;
+                        ne = i + 1;
+                        e = i + 1;
+                        se = i + 1;
+                        s = i;
+                        sw = i - 1;
+                        w = i - 1;
+                    }//last
+                    else if (i == columns - 1) {
+                        nw = i - 1;
+                        n = i;
+                        ne = 0;
+                        e = 0;
+                        se = 0;
+                        s = i;
+                        sw = i - 1;
+                        w = i - 1;
+                    }
+
+                } //case there are 1 column andmany rows
+                else if (rows > 1 && columns == 1) {
+                    //first
+                    if (i == 0) {
+                        nw = rows - 1;
+                        n = rows - 1;//
+                        ne = rows - 1;
+                        e = i;
+                        se = i + 1;
+                        s = i + 1;//
+                        sw = i + 1;
+                        w = i;
+                    } //middle
+                    else if (i > 0 && i < rows - 1) {
+                        nw = i-1;
+                        n = i-1;//
+                        ne = i-1;
+                        e = i;
+                        se = i + 1;
+                        s = i + 1;//
+                        sw = i + 1;
+                        w = i;
+                    }//last
+                    else if (i == rows - 1) {
+                        nw = i-1;
+                        n = i-1;//
+                        ne = i-1;
+                        e = i;
+                        se = 0;
+                        s = 0;//
+                        sw = 0;
+                        w = i;
+                    }
+
+                } //id on the middle
+                else if (nOfEdges(i) == 0) {
                     nw = i - columns - 1;
                     n = i - columns;
                     ne = i - columns + 1;
@@ -182,6 +260,7 @@ public class SquareGrid extends Grid {
                     }
 
                 }
+
                 c.setNorthWestNeighbour((SquareCell) cells.get(nw));
                 c.setNorthNeighbour((SquareCell) cells.get(n));
                 c.setNorthEastNeighbour((SquareCell) cells.get(ne));

@@ -75,14 +75,55 @@ public class SquareCell extends Cell {
             if (c.isRuleCell()) {
 
                 boolean c0 = this.currentState.compare(c.currentState);
-                boolean c1 = this.getNorthWestNeighbour().getCurrentState().compare(c.getNWSt());
-                boolean c2 = this.getNorthNeighbour().getCurrentState().compare(c.getNSt());
-                boolean c3 = this.getNorthEastNeighbour().getCurrentState().compare(c.getNESt());
-                boolean c4 = this.getEastNeighbour().getCurrentState().compare(c.getESt());
-                boolean c5 = this.getSouthEastNeighbour().getCurrentState().compare(c.getSESt());
-                boolean c6 = this.getSouthNeighbour().getCurrentState().compare(c.getSSt());
-                boolean c7 = this.getSouthWestNeighbour().getCurrentState().compare(c.getSWSt());
-                boolean c8 = this.getWestNeighbour().getCurrentState().compare(c.getWSt());
+                boolean c1, c2, c3, c4, c5, c6, c7, c8;
+                if (c.getNWSt() == null) {
+                    c1 = true;//case when rule asks to ignore that cell
+                } else {
+                    c1 = this.getNorthWestNeighbour().getCurrentState().compare(c.getNWSt());
+
+                }
+
+                if (c.getNSt() == null) {
+                    c2 = true;
+                } else {
+                    c2 = this.getNorthNeighbour().getCurrentState().compare(c.getNSt());
+                }
+
+                if (c.getNESt() == null) {
+                    c3 = true;
+                } else {
+                    c3 = this.getNorthEastNeighbour().getCurrentState().compare(c.getNESt());
+                }
+
+                if (c.getESt() == null) {
+                    c4 = true;
+                } else {
+                    c4 = this.getEastNeighbour().getCurrentState().compare(c.getESt());
+                }
+
+                if (c.getSESt() == null) {
+                    c5 = true;
+                } else {
+                    c5 = this.getSouthEastNeighbour().getCurrentState().compare(c.getSESt());
+                }
+
+                if (c.getSSt() == null) {
+                    c6 = true;
+                } else {
+                    c6 = this.getSouthNeighbour().getCurrentState().compare(c.getSSt());
+                }
+
+                if (c.getSWSt() == null) {
+                    c7 = true;
+                } else {
+                    c7 = this.getSouthWestNeighbour().getCurrentState().compare(c.getSWSt());
+                }
+
+                if (c.getWSt() == null) {
+                    c8 = true;
+                } else {
+                    c8 = this.getWestNeighbour().getCurrentState().compare(c.getWSt());
+                }
 
                 return c0 && c1 && c2 && c3 && c4 && c5 && c6 && c7 && c8;
 

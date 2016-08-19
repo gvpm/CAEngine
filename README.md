@@ -1,22 +1,28 @@
 # CAEngine
 ##A Cellular Automata Java Library.
 
-Set a grid
+- Set a grid
 
-Set the rules
+- Set the rules
 
-Iretate in a simple way
+- Iretate in a simple way
 
 You can run your simulations using the simple console UI.
 
 Alternatively you can implement your own Cellular Automata Simulator with or without GUI and not worry about the backend.
 
 
-##Usage Example
 The ConsoleTester is set by default, you can run it using:
 java -jar "CAEngine.jar" 
 
+This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist folder.
+
+##Usage Example
+
+Add the CAEngine.jar to your project libraries
+
 Don't forget to import
+
 ####import ca.engine.*;
 
 

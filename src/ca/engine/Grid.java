@@ -20,6 +20,7 @@ public abstract class Grid {
     int type;
     int rows, columns;
     int nOfCells;
+    Cell defaultCell;
 
     CellFactory cellFac = new CellFactory();
 
@@ -29,7 +30,7 @@ public abstract class Grid {
      */
     public Grid(CAEngine engine) {
         this.engine = engine;
-        cells = new ArrayList<Cell>();
+        cells = new ArrayList<>();
     }
 
     /**
@@ -64,6 +65,7 @@ public abstract class Grid {
                     cells.get(i).setCurrentState(engine.getStates().get(0));
 
                 }
+                defaultCell.setCurrentState(engine.getStates().get(0));
 
             } else {
                 throw new UnsupportedOperationException("Init grid fisrt");

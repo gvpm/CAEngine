@@ -75,53 +75,68 @@ public class SquareCell extends Cell {
             if (c.isRuleCell()) {
 
                 boolean c0 = this.currentState.compare(c.currentState);
-                boolean c1, c2, c3, c4, c5, c6, c7, c8;
+                boolean c1;
+                c1 = false;
+                boolean c2;
+                c2 = false;
+                boolean c3;
+                c3 = false;
+                boolean c4;
+                c4 = false;
+                boolean c5;
+                c5 = false;
+                boolean c6;
+                c6 = false;
+                boolean c7;
+                c7 = false;
+                boolean c8;
+                c8 = false;
                 if (c.getNWSt() == null) {
                     c1 = true;//case when rule asks to ignore that cell
-                } else {
+                } else if (this.getNorthWestNeighbour() != null) {
                     c1 = this.getNorthWestNeighbour().getCurrentState().compare(c.getNWSt());
 
                 }
 
                 if (c.getNSt() == null) {
                     c2 = true;
-                } else {
+                } else if (this.getNorthNeighbour() != null) {
                     c2 = this.getNorthNeighbour().getCurrentState().compare(c.getNSt());
                 }
 
                 if (c.getNESt() == null) {
                     c3 = true;
-                } else {
+                } else if (this.getNorthEastNeighbour() != null) {
                     c3 = this.getNorthEastNeighbour().getCurrentState().compare(c.getNESt());
                 }
 
                 if (c.getESt() == null) {
                     c4 = true;
-                } else {
+                } else if (this.getEastNeighbour() != null) {
                     c4 = this.getEastNeighbour().getCurrentState().compare(c.getESt());
                 }
 
                 if (c.getSESt() == null) {
                     c5 = true;
-                } else {
+                } else if (this.getSouthEastNeighbour() != null) {
                     c5 = this.getSouthEastNeighbour().getCurrentState().compare(c.getSESt());
                 }
 
                 if (c.getSSt() == null) {
                     c6 = true;
-                } else {
+                } else if (this.getSouthNeighbour() != null) {
                     c6 = this.getSouthNeighbour().getCurrentState().compare(c.getSSt());
                 }
 
                 if (c.getSWSt() == null) {
                     c7 = true;
-                } else {
+                } else if (this.getSouthWestNeighbour() != null) {
                     c7 = this.getSouthWestNeighbour().getCurrentState().compare(c.getSWSt());
                 }
 
                 if (c.getWSt() == null) {
                     c8 = true;
-                } else {
+                } else if (this.getWestNeighbour() != null) {
                     c8 = this.getWestNeighbour().getCurrentState().compare(c.getWSt());
                 }
 
@@ -401,15 +416,51 @@ public class SquareCell extends Cell {
     @Override
     public boolean checkStateTuple(StateTuple st) {
         int cont = 0;
+        boolean c1;
+        c1 = false;
+        boolean c2;
+        c2 = false;
+        boolean c3;
+        c3 = false;
+        boolean c4;
+        c4 = false;
+        boolean c5;
+        c5 = false;
+        boolean c6;
+        c6 = false;
+        boolean c7;
+        c7 = false;
+        boolean c8;
+        c8 = false;
+        if (this.getNorthWestNeighbour() != null) {
+            c1 = this.getNorthWestNeighbour().getCurrentState().compare(st.getState());
+        }
+        if (this.getNorthNeighbour() != null) {
+            c2 = this.getNorthNeighbour().getCurrentState().compare(st.getState());
+        }
+        if (this.getNorthEastNeighbour() != null) {
+            c3 = this.getNorthEastNeighbour().getCurrentState().compare(st.getState());
+        }
+        if (this.getEastNeighbour() != null) {
+            c4 = this.getEastNeighbour().getCurrentState().compare(st.getState());
+        }
 
-        boolean c1 = this.getNorthWestNeighbour().getCurrentState().compare(st.getState());
-        boolean c2 = this.getNorthNeighbour().getCurrentState().compare(st.getState());
-        boolean c3 = this.getNorthEastNeighbour().getCurrentState().compare(st.getState());
-        boolean c4 = this.getEastNeighbour().getCurrentState().compare(st.getState());
-        boolean c5 = this.getSouthEastNeighbour().getCurrentState().compare(st.getState());
-        boolean c6 = this.getSouthNeighbour().getCurrentState().compare(st.getState());
-        boolean c7 = this.getSouthWestNeighbour().getCurrentState().compare(st.getState());
-        boolean c8 = this.getWestNeighbour().getCurrentState().compare(st.getState());
+        if (this.getSouthEastNeighbour() != null) {
+            c5 = this.getSouthEastNeighbour().getCurrentState().compare(st.getState());
+        }
+
+        if (this.getSouthNeighbour() != null) {
+            c6 = this.getSouthNeighbour().getCurrentState().compare(st.getState());
+        }
+
+        if (this.getSouthWestNeighbour() != null) {
+            c7 = this.getSouthWestNeighbour().getCurrentState().compare(st.getState());
+        }
+
+        if (this.getWestNeighbour() != null) {
+            c8 = this.getWestNeighbour().getCurrentState().compare(st.getState());
+        }
+
         if (c1) {
 
             cont++;

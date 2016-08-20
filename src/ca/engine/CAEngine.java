@@ -14,7 +14,7 @@ public class CAEngine {
     int gridType;
     int cellType;
     int stateType;
-    //1 circular
+    //1 circular 2 absorbing
     int boundariesType;
     int nOfRows;
     int nOfColumns;
@@ -275,6 +275,7 @@ public class CAEngine {
      * @param id
      */
     public void printNeighbours(int id) {
+        //throw new UnsupportedOperationException("Not Supported yet");
 
         grid.printNeighbours(id);
     }

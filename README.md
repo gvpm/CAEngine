@@ -18,11 +18,13 @@ java -jar "CAEngine.jar"
 This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist folder.
 
 ##What is currently supported
-- Square Grid
-- Square Cells
-- Circular Boundary
-- Int States
-- String States
+- Square Grid (gridType = 1)
+- Square Cells (cellType = 1)
+- Circular Boundary (bondaryType = 1)
+- Fix Boundary (bondaryType = 2)
+(Edge Neighbours are the default cell with the first state created)
+- Int States (stateType = 1)
+- String States (stateType = 2)
 - Image Rules
 - Quantity Rules
 
@@ -30,7 +32,6 @@ This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist f
 - Hexagonal Grid
 - Hexagonal Cells
 - Reflective Boundary
-- Absorbing Boundary
 - RGB States
 
 ...and more

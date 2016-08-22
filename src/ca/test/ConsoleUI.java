@@ -38,6 +38,7 @@ public class ConsoleUI {
         State stateOne = e.createState(1, 1);
 
         e.init();
+
         //*/
         /*
         e.setup(1, 1, 2, 1, rows, columns);

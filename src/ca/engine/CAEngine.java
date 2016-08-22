@@ -6,6 +6,8 @@ package ca.engine;
 import java.util.ArrayList;
 
 /**
+ * Its the only class you have access from the outside It provides all the
+ * interface necessary to interact with the CAEngine
  *
  * @author gvpm
  */
@@ -15,7 +17,7 @@ public class CAEngine {
     int cellType;
     int stateType;
     //1 circular 2 absorbing
-    int boundariesType;
+    int boundaryType;
     int nOfRows;
     int nOfColumns;
 
@@ -30,7 +32,7 @@ public class CAEngine {
     ArrayList<Rule> rules;
 
     /**
-     *
+     * It creates the storing place for the rules and states available
      */
     public CAEngine() {
         states = new ArrayList<>();
@@ -39,19 +41,21 @@ public class CAEngine {
     }
 
     /**
+     * Once an engine is instantiated it needs to be set up After the setup is
+     * done, the grid will be automatically created.
      *
-     * @param gridType
-     * @param cellType
-     * @param stateType
-     * @param boundariesType
-     * @param nOfRows
-     * @param nOfColumns
+     * @param gridType Type of the grid (1=SquareGrid)
+     * @param cellType Type Of the cell (1=SquareCell)
+     * @param stateType Type of the state (1=intState, 2=stringState)
+     * @param boundaryType Type of the boundary (1=Circular, 2= Fix)
+     * @param nOfRows Number of rows
+     * @param nOfColumns Number of columns
      */
-    public void setup(int gridType, int cellType, int stateType, int boundariesType, int nOfRows, int nOfColumns) {
+    public void setup(int gridType, int cellType, int stateType, int boundaryType, int nOfRows, int nOfColumns) {
         this.gridType = gridType;
         this.cellType = cellType;
         this.stateType = stateType;
-        this.boundariesType = boundariesType;
+        this.boundaryType = boundaryType;
         this.nOfRows = nOfRows;
         if (nOfRows <= 0) {
             throw new UnsupportedOperationException("Number of rows not supported yet Try > 2");
@@ -70,6 +74,9 @@ public class CAEngine {
 
     //creates the grid
     /**
+     * The grid is initialised, all the cells will receive the first state
+     * created The neighbours will be set for all the cells according to the
+     * boundary set.
      *
      */
     public void init() {
@@ -80,13 +87,33 @@ public class CAEngine {
         //grid.printNeighbours(9);
 
     }
-    //the rule that checks if a cell and its neghjbours are in a determinate state
 
     /**
+     * Is a cell like the others on the grid but it does not store references to
+     * neighbours It stores the current state of the cell and the states that
+     * the neighbours need to be to match the rule that the ruleCell is applied.
      *
-     * @param ruleCell
-     * @param nextState
-     * @return
+     * You have to initialise the ruleCell create using initRuleCell(...)
+     *
+     * @param cellType Type of the cell.
+     * @param gridType Type of the grid.
+     * @return A ruleCell that needs to be initialised
+     */
+    public Cell createRuleCell(int cellType, int gridType) {
+
+        return cellFac.fabricate(cellType, gridType, true);
+    }
+
+    /**
+     * It contains a ruleCell and a next State Use apply(Cell c) with another
+     * cell of the same type if it matches the rule will tell the it to change
+     * its state in the next iteration. Once created the rule is automatically
+     * added to the rules from the engine it will automatically be checked on
+     * the iterations
+     *
+     * @param ruleCell The ruleCell that needs to be matched
+     * @param nextState The next state the cell should get
+     * @return Returns the rule created
      */
     public Rule createImageRule(Cell ruleCell, State nextState) {
 
@@ -97,11 +124,34 @@ public class CAEngine {
     }
 
     /**
-     * Creates quantity rules, still need to add one state tuple for each
+     * State tuple with a state and the quantity to check and if its greater
+     * smaller o equal. Its the condition to the Quantity rule.
      *
-     * @param currentState
-     * @param nextState
-     * @return
+     * @param s state to be checked
+     * @param quantity quantity of that state to compare to the neighbours
+     * @param type -1 = total number of neighbours with that state is less than
+     * "quantity", 0 = // equal to "quantity", 1= // greater than "quantity"
+     * @return returns the state tuple to be added in the quantity rule
+     */
+    public StateTuple createStateTuple(State s, int quantity, int type) {
+
+        return new StateTuple(s, quantity, type);
+    }
+
+    /**
+     * Creates quantity rules, it needs a stateTuple to function. A Cell that
+     * matched the current state that has the stateTuple condition satisfied
+     * will be notified to change its state to the next state in the next
+     * iteration
+     *
+     *
+     * Once created the rule is automatically added to the rules from the engine
+     * it will automatically be checked on the iterations
+     *
+     * @param currentState Current state of the cell checked
+     * @param nextState Next state for the cell to go if it matches the
+     * conditions
+     * @return The rule creates
      */
     public Rule createQuantityRule(State currentState, State nextState) {
 
@@ -113,34 +163,7 @@ public class CAEngine {
     }
 
     /**
-     * State tuple with a state, the quantity to check and if its greater
-     * smaller o equal
-     *
-     * @param s
-     * @param quantity
-     * @param type
-     * @return
-     */
-    public StateTuple createStateTuple(State s, int quantity, int type) {
-
-        return new StateTuple(s, quantity, type);
-    }
-    //creates a rule cell to be initialized outside the engine and used later in the rule
-
-    /**
-     *
-     * @param cellType
-     * @param gridType
-     * @return
-     */
-    public Cell createRuleCell(int cellType, int gridType) {
-
-        return cellFac.fabricate(cellType, gridType, true);
-    }
-
-    //creates and setup the grid;
-    /**
-     *
+     * Creates and sets up the grid with the values previously received
      */
     public void createGrid() {
         grid = gridFac.fabricate(gridType, this);
@@ -149,10 +172,18 @@ public class CAEngine {
 
     //calls the grid state
     /**
+     * Creation of a state from the outside. States created via this function
+     * are automatically added to the state list of the engine The first state
+     * created is set to be the default state of the machine.
      *
-     * @param type
-     * @param value
-     * @return
+     * The state will be created by the stateFactory and it will be passed
+     * outside
+     *
+     * @param type Type of the state to be created (1= int state, 2= String
+     * state)
+     * @param value The value of that state (The value passed here should match
+     * the type selected)
+     * @return The new state that was created
      */
     public State createState(int type, Object value) {
         State newState = stateFac.fabricate(type, value);
@@ -161,7 +192,10 @@ public class CAEngine {
     }
 
     /**
-     *
+     * The iteration of the engine It checks all the rules in all the cells in
+     * the grid After all the cells are notified with their next states (if
+     * applicable) a grid update is done and the cells update themselves to the
+     * new state
      */
     public void iterate() {
         //throw new UnsupportedOperationException("Not supported yet.");
@@ -173,6 +207,25 @@ public class CAEngine {
 
     }
 
+    /**
+     * Changes the state of an specific cell to a given state
+     *
+     * @param id the id of the cell to change
+     * @param s the new state of the cell
+     */
+    public void changeState(int id, State s) {
+        Cell c = grid.getCell(id);
+        if (c.getCurrentState().getType() == s.getType()) {
+            c.setCurrentState(s);
+
+        } else {
+            throw new UnsupportedOperationException("State types dont match");
+
+        }
+
+    }
+
+    //////////////////Getters, Setters and toStrings
     /**
      *
      * @return
@@ -190,15 +243,6 @@ public class CAEngine {
     public String getStateString(int id) {
 
         return grid.getCell(id).toString();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int num() {
-
-        return 1;
     }
 
     /**
@@ -227,7 +271,8 @@ public class CAEngine {
 
     /**
      *
-     * @return
+     * @return a string with all the current states of cells with a space
+     * between
      */
     public String stateString() {
 
@@ -236,7 +281,7 @@ public class CAEngine {
 
     /**
      *
-     * @return
+     * @return a vector with all the states as Strings
      */
     public String[] stateVector() {
 
@@ -254,7 +299,8 @@ public class CAEngine {
 
     /**
      *
-     * @return
+     * @return a string with the IDS to be printed in the console in a form of
+     * matrix taking in account the number of rows and columns
      */
     public String idMatrix() {
 
@@ -262,8 +308,8 @@ public class CAEngine {
     }
 
     /**
-     *
-     * @return
+     * @return a string with the States to be printed in the console in a form
+     * of matrix taking in account the number of rows and columns
      */
     public String stateMatrix() {
 
@@ -271,8 +317,10 @@ public class CAEngine {
     }
 
     /**
+     * Gets an id and prints the neighbours of that cell Currently used for
+     * testing
      *
-     * @param id
+     * @param id the id of the cell to check
      */
     public void printNeighbours(int id) {
         //throw new UnsupportedOperationException("Not Supported yet");
@@ -282,27 +330,10 @@ public class CAEngine {
 
     /**
      *
-     * @return
+     * @return the current boundary type set in the engine
      */
-    public int getBoundariesType() {
-        return boundariesType;
-    }
-
-    /**
-     *
-     * @param id
-     * @param s
-     */
-    public void changeState(int id, State s) {
-        Cell c = grid.getCell(id);
-        if (c.getCurrentState().getType() == s.getType()) {
-            c.setCurrentState(s);
-
-        } else {
-            throw new UnsupportedOperationException("State types dont match");
-
-        }
-
+    public int getBoundaryType() {
+        return boundaryType;
     }
 
 }

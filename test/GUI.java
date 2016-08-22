@@ -34,8 +34,8 @@ public class GUI extends PApplet {
     @Override
     public void settings() {
         size(900, 600);
-        rows = 10;
-        columns = 10;
+        rows = 100;
+        columns = 100;
 
     }
 
@@ -74,7 +74,7 @@ public class GUI extends PApplet {
          */
 
         //http://www.sojamo.de/libraries/controlP5/#examples
-        e.setup(1, 1, 1, 2, rows, columns);
+        e.setup(1, 1, 1, 1, rows, columns);
         stateZero = e.createState(1, 0);
         stateOne = e.createState(1, 1);
 

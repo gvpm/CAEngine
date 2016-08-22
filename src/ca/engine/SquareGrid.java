@@ -54,7 +54,7 @@ public class SquareGrid extends Grid {
     public void setNeighbours() {
 
         //Case of circular
-        switch (engine.getBoundariesType()) {
+        switch (engine.getBoundaryType()) {
             case 1:
                 setNeighboursCircularBoundary();
 

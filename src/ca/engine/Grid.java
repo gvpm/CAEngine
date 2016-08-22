@@ -34,6 +34,7 @@ public abstract class Grid {
     }
 
     /**
+     * Got to create a default cell on the setup.
      *
      * @param rows
      * @param columns

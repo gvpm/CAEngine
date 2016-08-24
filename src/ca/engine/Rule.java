@@ -90,4 +90,44 @@ public class Rule {
 
     }
 
+    /**
+     *
+     * @return
+     */
+    public int getType() {
+        return type;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Cell getRuleCell() {
+        return ruleCell;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public StateTuple getStateTuple() {
+        return stateTuple;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public State getNextState() {
+        return nextState;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public State getCurrentState() {
+        return currentState;
+    }
+
 }

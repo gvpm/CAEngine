@@ -86,4 +86,17 @@ public class StateTuple {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
+    public String getConfString() {
+
+        String r = state + " ";
+        r = r.concat(quantity + " ");
+        r = r.concat(type + "");
+        return r;
+
+    }
+
 }

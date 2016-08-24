@@ -188,4 +188,10 @@ public abstract class Cell {
      */
     public abstract boolean checkStateTuple(StateTuple st);
 
+    /**
+     *
+     * @return
+     */
+    public abstract String getConfString();
+
 }

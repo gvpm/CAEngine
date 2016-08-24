@@ -512,4 +512,27 @@ public class SquareCell extends Cell {
 
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String getConfString() {
+        String r = null;
+        if (this.isRuleCell()) {
+
+            r = currentState + " ";
+            r = r.concat(nwSt + " ");
+            r = r.concat(nSt + " ");
+            r = r.concat(neSt + " ");
+            r = r.concat(eSt + " ");
+            r = r.concat(seSt + " ");
+            r = r.concat(sSt + " ");
+            r = r.concat(swSt + " ");
+            r = r.concat(wSt + "");
+
+        }
+        return r;
+    }
+
 }

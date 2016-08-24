@@ -336,4 +336,82 @@ public class CAEngine {
         return boundaryType;
     }
 
+    /**
+     *
+     * @return
+     */
+    public String getGridConfString() {
+
+        String r = gridType + " ";
+        r = r.concat(cellType + " ");
+        r = r.concat(stateType + " ");
+        r = r.concat(boundaryType + " ");
+        r = r.concat(nOfRows + " ");
+        r = r.concat(nOfColumns + "");
+
+        return r;
+    }
+
+    /**
+     *
+     * @param fileName
+     */
+    public void save(String fileName) {
+
+        FileSaver f = new FileSaver(this, fileName);
+        f.run();
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList<State> getStateList() {
+
+        return states;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList<Rule> getRuleList() {
+
+        return rules;
+    }
+
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public State getStateFromString(String s) {
+        State resp = null;
+        for (int i = 0; i < states.size(); i++) {
+            if (states.get(i).toString().compareTo(s) == 0) {
+                resp = states.get(i);
+            }
+
+        }
+
+        return resp;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getnOfRows() {
+        return nOfRows;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getnOfColumns() {
+        return nOfColumns;
+    }
+
 }

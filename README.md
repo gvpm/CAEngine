@@ -27,6 +27,8 @@ This repo is a Netbeans 8.1 Project, you can get the CAEngine.jar on the /dist f
 - String States (stateType = 2)
 - Image Rules
 - Quantity Rules
+- Save Engine initial config, list of states and list of rules in a .txt file
+- Load from a .txt file
 
 ##What is planned
 - Hexagonal Grid
@@ -110,4 +112,17 @@ returns a string that prints the current grid on console
 
 ####e.changeState(73, stateOne);
 you can change the state of a cell using the ID
+
+####e.save("save.txt");
+saves the initial config of the Engine with the list of states and rules
+stores in the file with the given name
+
+####CAEngine e;
+####FileLoader loader = new FileLoader(fileName);
+####e = loader.load();
+the loades returns a CAEngine fully initialised from the text file with the given name
+
+
+
+
 

@@ -413,5 +413,10 @@ public class CAEngine {
     public int getnOfColumns() {
         return nOfColumns;
     }
+    
+    public void clearRules(){
+        rules.clear();
+        
+    }
 
 }

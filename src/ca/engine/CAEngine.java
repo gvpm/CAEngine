@@ -418,5 +418,11 @@ public class CAEngine {
         rules.clear();
         
     }
+    
+    public void reSetBoundaryType(int type){
+        this.boundaryType = boundaryType = type;
+        grid.setNeighbours();
+        
+    }
 
 }

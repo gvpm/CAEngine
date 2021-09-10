@@ -225,6 +225,18 @@ public class CAEngine {
 
     }
 
+    public void applyRLE(int id, State s, int width, int height, String rle) {
+
+        grid.applyRLE(id, s, width, height, rle);
+
+    }
+    
+        public void applyRLE(int id, State s, String rle) {
+
+        grid.applyRLE(id, s, grid.columns, grid.rows, rle);
+
+    }
+
     //////////////////Getters, Setters and toStrings
     /**
      *
@@ -413,16 +425,16 @@ public class CAEngine {
     public int getnOfColumns() {
         return nOfColumns;
     }
-    
-    public void clearRules(){
+
+    public void clearRules() {
         rules.clear();
-        
+
     }
-    
-    public void reSetBoundaryType(int type){
+
+    public void reSetBoundaryType(int type) {
         this.boundaryType = boundaryType = type;
         grid.setNeighbours();
-        
+
     }
 
 }

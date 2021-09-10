@@ -109,6 +109,10 @@ public class ConsoleUI {
         System.out.println("States Matrix");
         System.out.println("");
         System.out.println(e.stateMatrix());
+        
+        //e.applyRLE(131, stateOne, 3, 3, "bo$2bo$3o!");
+        e.applyRLE(131, stateOne, 8, 12, "b2o2b2o$3b2o$3b2o$obo2bobo$o6bo2$o6bo$b2o2b2o$2b4o2$3b2o$3b2o!");
+
 
         while (control) {
             System.out.println("\n1-Iterate\n2-Random Init\n3-Clear Grid\n4-Show Zeros\n5-Save\n6-Exit");

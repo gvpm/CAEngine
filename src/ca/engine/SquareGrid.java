@@ -5,6 +5,10 @@
  */
 package ca.engine;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author gvpm
@@ -696,6 +700,125 @@ public class SquareGrid extends Grid {
         System.out.println("");
         System.out.println(c.getSouthWestNeighbour().idString() + " " + c.getSouthNeighbour().idString() + " " + c.getSouthEastNeighbour().idString());
         //*/
+    }
+
+    @Override
+    public void applyRLE(int id, State s, int width, int height, String rle) {
+        SquareCell mainCell = (SquareCell) this.getCell(id);
+        if ((width > this.columns) || (height > this.rows)) {
+            throw new UnsupportedOperationException("Pattern is bigger than current grid");
+        }
+        if (mainCell.getCurrentState().getType() == s.getType()) {
+
+        } else {
+            throw new UnsupportedOperationException("State types dont match");
+
+        }
+        //System.out.println("rle: " + rle);
+        String replacedRLE;
+        replacedRLE = rle.replaceAll("\\$", "G");
+        //System.out.println("new: " + replacedRLE);
+        //Pattern p = Pattern.compile("\\d\\$");
+        //Pattern r = Pattern.compile("$$$&");
+
+        //Matcher m = p.matcher(rle);
+        //System.out.println("Matcher: "+ m.replaceAll("$$$&"));
+        ArrayList<String> allMatches = new ArrayList<>();
+        Matcher m = Pattern.compile("\\dG").matcher(replacedRLE);
+        while (m.find()) {
+            allMatches.add(m.group());
+        }
+        
+        
+        for (int q = 0; q < allMatches.size(); q++) {
+            //System.out.println("Match: "+allMatches.get(q));
+            String stringToBeReplaced = allMatches.get(q);
+            String newString = "G";
+            int linesToJump = Integer.parseInt(stringToBeReplaced.substring(0, (stringToBeReplaced.length() - 1)))-1;
+            //stringToBeReplaced = String.valueOf(linesToJump+1)+"\\\\"+"$";
+            for (int i = 0; i < linesToJump; i++) {
+                
+                newString = "G "+newString;                
+            }
+            
+            //System.out.println("old: "+stringToBeReplaced +" new: "+ newString);
+            replacedRLE = replacedRLE.replaceAll(stringToBeReplaced, newString);
+            
+        }
+
+        //String replacedRLE = rle.replaceAll(p.pattern(), "$$$&");
+        //System.out.println("replacedRLE: " + replacedRLE);
+
+        String[] rowStrings = replacedRLE.split("G");
+        ArrayList<SquareCell> startingCells = new ArrayList<>();
+        SquareCell latestStartingCell = mainCell;
+
+        ArrayList<SquareCell> cellsToChangeState = new ArrayList<>();
+
+        //System.out.println("Number of Rows: " + rowStrings.length);
+        for (int i = 0; i < rowStrings.length; i++) {
+            //System.out.println("rowString: " + rowStrings[i]);
+            if (i == 0) {
+                //first cell, first row
+                startingCells.add(mainCell);
+            } else {
+                latestStartingCell = latestStartingCell.getSouthNeighbour();
+                startingCells.add(latestStartingCell);
+            }
+            //String rowString = rowStrings[i];
+        }
+        //1 for each row
+        for (int i = 0; i < rowStrings.length; i++) {
+
+            String rowString = rowStrings[i];
+            //System.out.println("rowString: " + rowString);
+            rowString = rowString.replace("b", "b ");
+            rowString = rowString.replace("o", "o ");
+            SquareCell currentCell = startingCells.get(i).getWestNeighbour();
+
+            String[] rowStringElements = rowString.split(" ");
+            //one for each row element
+            for (int j = 0; j < rowStringElements.length; j++) {
+                //System.out.println("rowStringElement: " + rowStringElements[j]);
+                //ignore final row element
+                if ("!".equals(rowStringElements[j])) {
+                    //System.out.println("End Element");
+                    break;
+                    //case where element has no number, jump 1    
+                } else if (rowStringElements[j].length() == 1) {
+                    currentCell = currentCell.getEastNeighbour();
+                    //if the element is o, needs to be alive
+                    if ("o".equals(rowStringElements[j])) {
+                        //System.out.println("Adding 1 cell with ID: " + currentCell.id);
+                        cellsToChangeState.add(currentCell);
+                    }
+                } else {
+                    //complex element no or nb
+                    rowStringElements[j] = rowStringElements[j].replace("b", " b");
+                    rowStringElements[j] = rowStringElements[j].replace("o", " o");
+                    //makes "n o" or "n b"                    
+                    String[] complexElement = rowStringElements[j].split(" ");
+                    //number to the left, instruction to the right
+                    for (int k = 0; k < Integer.parseInt(complexElement[0]); k++) {
+                        currentCell = currentCell.getEastNeighbour();
+                        if ("o".equals(complexElement[1])) {
+                            //System.out.println("Adding cell with ID: " + currentCell.id);
+                            cellsToChangeState.add(currentCell);
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        for (int i = 0; i < cellsToChangeState.size(); i++) {
+            //System.out.println("CellToChangeState: " + cellsToChangeState.get(i).idString());
+            cellsToChangeState.get(i).setCurrentState(s);
+
+        }
+
     }
 
 }

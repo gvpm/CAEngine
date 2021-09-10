@@ -90,6 +90,7 @@ public abstract class Grid {
      * @param id
      */
     public abstract void printNeighbours(int id);
+    public abstract void applyRLE(int id, State s, int width, int height, String rle);
 
     /**
      *
@@ -221,5 +222,7 @@ public abstract class Grid {
 
         return cells.get(id);
     }
+    
+ 
 
 }
